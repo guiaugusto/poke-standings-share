@@ -62,4 +62,32 @@ describe('TeamModal', () => {
     fireEvent.click(screen.getByRole('button', { name: /fechar/i }));
     expect(onClose).toHaveBeenCalled();
   });
+
+  it('hides the Stats tab entirely when no Pokemon in the team has any EV data (e.g. an OTS-only paste)', () => {
+    const otsPlayer: PlayerWithTeam = {
+      ...player,
+      parsedTeam: [
+        { species: 'Salamence', item: 'Salamencite', ability: 'Intimidate', moves: ['Draco Meteor'] },
+        { species: 'Tyranitar', item: 'Tyranitarite', ability: 'Sand Stream', moves: ['Rock Slide'] },
+      ],
+    };
+    render(<TeamModal player={otsPlayer} onClose={() => {}} />);
+
+    expect(screen.queryByRole('tab', { name: 'Stats' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('tab', { name: 'Moves' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('tablist')).not.toBeInTheDocument();
+    expect(screen.getByText('Draco Meteor')).toBeInTheDocument();
+  });
+
+  it('still shows the Stats tab if at least one Pokemon (not necessarily all) has EV data', () => {
+    const mixedPlayer: PlayerWithTeam = {
+      ...player,
+      parsedTeam: [
+        { species: 'Salamence', item: 'Salamencite', ability: 'Intimidate', moves: ['Draco Meteor'] },
+        { species: 'Incineroar', item: 'Sitrus Berry', ability: 'Intimidate', evs: { hp: 244 }, moves: ['Fake Out'] },
+      ],
+    };
+    render(<TeamModal player={mixedPlayer} onClose={() => {}} />);
+    expect(screen.getByRole('tab', { name: 'Stats' })).toBeInTheDocument();
+  });
 });
