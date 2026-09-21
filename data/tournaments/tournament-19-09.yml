@@ -1,0 +1,361 @@
+# data/tournaments/_template.yml
+#
+# Copie este arquivo para um novo arquivo nesta mesma pasta (ex: copa-de-verao.yml)
+# e preencha os campos abaixo com os dados do seu torneio. Arquivos que
+# começam com "_" (como este) são ignorados pelo site.
+
+name: "League Challenge - Gruta Bsb"
+date: 2026-09-19          # formato AAAA-MM-DD
+format: "VGC Regulation M-C1" # opcional — pode remover esta linha
+
+players:
+  # Copie o bloco abaixo para cada jogador, não precisa ser na ordem de colocação.
+  - rank: 3
+    nick: "Luiz Dutra"
+    pokepaste: "https://pokepast.es/a826c8a53fccbf0e" # opcional, só para crédito
+    wins: 4
+    losses: 1
+    ties: 0
+    points: 12
+    team: |
+      Salamence @ Salamencite  
+      Ability: Intimidate  
+      - Draco Meteor  
+      - Hyper Voice  
+      - Tailwind  
+      - Protect  
+
+      Tyranitar @ Tyranitarite  
+      Ability: Sand Stream  
+      - Rock Slide  
+      - Knock Off  
+      - Low Kick  
+      - Protect  
+
+      Excadrill @ Focus Sash  
+      Ability: Sand Rush  
+      - High Horsepower  
+      - Iron Head  
+      - Rock Slide  
+      - Protect  
+
+      Milotic @ Sitrus Berry  
+      Ability: Competitive  
+      - Scald  
+      - Icy Wind  
+      - Haze  
+      - Protect  
+
+      Gholdengo @ Leftovers  
+      Ability: Good as Gold  
+      - Make It Rain  
+      - Shadow Ball  
+      - Nasty Plot  
+      - Protect  
+
+      Rillaboom @ Life Orb  
+      Ability: Grassy Surge  
+      - Wood Hammer  
+      - Fake Out  
+      - Grassy Glide  
+      - U-turn  
+  - rank: 13
+    nick: "Luan Motta"
+    pokepaste: "https://pokepast.es/115680cb815c3fd3" # opcional, só para crédito
+    wins: 2
+    losses: 3
+    ties: 0
+    points: 6
+    team: |
+      Merlin (Delphox) (M) @ Delphoxite  
+      Ability: Blaze  
+      Modest Nature  
+      - Heat Wave  
+      - Protect  
+      - Nasty Plot  
+      - Psychic  
+
+      Mamaco (Rillaboom) (M) @ Miracle Seed  
+      Ability: Grassy Surge  
+      Adamant Nature  
+      - Grassy Glide  
+      - High Horsepower  
+      - Fake Out  
+      - Wood Hammer  
+
+      Ninetails (Ninetales-Alola) (F) @ Focus Sash  
+      Ability: Snow Warning  
+      Modest Nature  
+      - Blizzard  
+      - Moonblast  
+      - Aurora Veil  
+      - Protect  
+
+      Aargh (Golisopod) (M) @ Golisopite  
+      Ability: Emergency Exit  
+      Brave Nature  
+      - Sucker Punch  
+      - Protect  
+      - Leech Life  
+      - Iron Head  
+
+      Basculegend (Basculegion) (M) @ Life Orb  
+      Ability: Adaptability  
+      Adamant Nature  
+      - Last Respects  
+      - Protect  
+      - Wave Crash  
+      - Aqua Jet  
+
+      Snealser (Sneasler) (M) @ White Herb  
+      Ability: Unburden  
+      Adamant Nature  
+      - Dire Claw  
+      - Protect  
+      - Fake Out  
+      - Close Combat  
+  - rank: 2
+    nick: "God Kohl"
+    pokepaste: "https://pokepast.es/1e91cd72c49ee548" # opcional, só para crédito
+    wins: 4
+    losses: 1
+    ties: 0
+    points: 12
+    team: |
+      Teu CUruru (Venusaur) (M) @ Focus Sash  
+      Ability: Chlorophyll  
+      Level: 50  
+      - Sleep Powder  
+      - Protect  
+      - Leaf Storm  
+      - Earth Power  
+
+      Amargedon (Charizard) (M) @ Charizardite Y  
+      Ability: Blaze  
+      Shiny: Yes  
+      - Protect  
+      - Ancient Power  
+      - Heat Wave  
+      - Weather Ball  
+
+      Resistência (Pelipper) (M) @ Sitrus Berry  
+      Ability: Drizzle  
+      - Tailwind  
+      - Wide Guard  
+      - Weather Ball  
+      - Hurricane  
+
+      Droideka (Golisopod) (M) @ Golisopite  
+      Ability: Emergency Exit  
+      Shiny: Yes  
+      - Iron Head  
+      - Sucker Punch  
+      - Swords Dance  
+      - Leech Life  
+
+      Duente Verde (Grimmsnarl) @ Light Clay  
+      Ability: Prankster  
+      - Spirit Break  
+      - Reflect  
+      - Light Screen  
+      - Parting Shot  
+
+      Golden Gate (Archaludon) (M) @ Leftovers  
+      Ability: Stamina  
+      Shiny: Yes  
+      - Protect  
+      - Electro Shot  
+      - Flash Cannon  
+      - Dragon Pulse  
+  - rank: 12
+    nick: "Vinícius Sampaio"
+    pokepaste: "https://pokepast.es/cb2113730997ef4f" # opcional, só para crédito
+    wins: 3
+    losses: 2
+    ties: 0
+    points: 9
+    team: |
+      Salamence-Mega @ Salamencite  
+      Ability: Aerilate  
+      Naive Nature  
+      - Double-Edge  
+      - Hyper Voice  
+      - Protect  
+      - Tailwind  
+
+      Sneasler @ Grassy Seed  
+      Ability: Unburden  
+      Level: 50  
+      Adamant Nature  
+      - Dire Claw  
+      - Close Combat  
+      - Swords Dance  
+      - Protect  
+
+      Rillaboom @ Sitrus Berry  
+      Ability: Grassy Surge  
+      Level: 50  
+      Adamant Nature  
+      - Wood Hammer  
+      - Grassy Glide  
+      - U-turn  
+      - Fake Out  
+
+      Arcanine-Hisui @ Focus Sash  
+      Ability: Rock Head  
+      Level: 50  
+      Jolly Nature  
+      - Flare Blitz  
+      - Head Smash  
+      - Extreme Speed  
+      - Protect  
+
+      Kingambit @ Chople Berry  
+      Ability: Defiant  
+      Level: 50  
+      Adamant Nature  
+      - Kowtow Cleave  
+      - Low Kick  
+      - Sucker Punch  
+      - Iron Head  
+
+      Basculegion (M) @ Mystic Water  
+      Ability: Adaptability  
+      Level: 50  
+      Adamant Nature  
+      - Wave Crash  
+      - Aqua Jet  
+      - Protect  
+      - Last Respects  
+  - rank: 8
+    nick: "Fernando Dos Passos"
+    pokepaste: "https://www.vrpastes.com/cznFBqXo" # opcional, só para crédito
+    wins: 3
+    losses: 2
+    ties: 0
+    points: 9
+    team: |
+      Gengar @ Gengarite
+      Ability: Cursed Body
+      Timid Nature
+      - Shadow Ball
+      - Perish Song
+      - Protect
+      - Sludge Bomb
+
+      Annihilape @ Choice Scarf
+      Ability: defiant
+      jolly Nature
+      - Rage Fist
+      - Ice Punch
+      - Close Combat
+      - U-turn
+
+      Archaludon @ Leftovers
+      Ability: Stamina
+      Modest Nature
+      - Flash Cannon
+      - Electro Shot
+      - Protect
+      - Dragon Pulse
+
+      Politoed @ Sitrus Berry
+      Ability: Drizzle
+      Calm Nature
+      - Weather Ball
+      - Ice Beam
+      - Perish Song
+      - Protect
+
+      Incineroar @ Eject Button
+      Ability: Intimidate
+      Impish Nature
+      - Fake Out
+      - Parting Shot
+      - Protect
+      - Flare Blitz
+
+      Golisopod @ Golisopite
+      Ability: Emergency Exit
+      Brave Nature
+      - Leech Life
+      - Iron Head
+      - Sucker Punch
+      - Protect
+  - rank: 5
+    nick: "Rafael Villela"
+    pokepaste: "https://pokepast.es/2ef6b4040166da30" # opcional, só para crédito
+    wins: 4
+    losses: 1
+    ties: 0
+    points: 12
+    team: |
+      Gengar @ Gengarite  
+      Ability: Cursed Body  
+      Level: 50  
+      Timid Nature  
+      - Sludge Bomb  
+      - Shadow Ball  
+      - Perish Song  
+      - Protect  
+
+      Incineroar @ Sitrus Berry  
+      Ability: Intimidate  
+      Level: 50  
+      Relaxed Nature  
+      - Fake Out  
+      - Flare Blitz  
+      - Parting Shot  
+      - Protect  
+
+      Rillaboom @ Miracle Seed  
+      Ability: Grassy Surge  
+      Level: 50  
+      Adamant Nature  
+      - Fake Out  
+      - U-turn  
+      - Grassy Glide  
+      - Protect  
+
+      Sneasler @ Grassy Seed  
+      Ability: Unburden  
+      Level: 50  
+      Adamant Nature  
+      - Dire Claw  
+      - Close Combat  
+      - Rock Slide  
+      - Protect  
+
+      Milotic @ Leftovers  
+      Ability: Competitive  
+      Level: 50  
+      Modest Nature  
+      - Muddy Water  
+      - Hypnosis  
+      - Coil  
+      - Protect  
+
+      Floette-Eternal (F) @ Floettite  
+      Ability: Flower Veil  
+      Level: 50  
+      Modest Nature  
+      - Dazzling Gleam  
+      - Draining Kiss  
+      - Calm Mind  
+      - Protect  
+  # - rank: 1
+  #   nick: "Nome do Jogador"
+  #   pokepaste: "https://pokepast.es/xxxxxxxxxxxx" # opcional, só para crédito
+  #   wins: 0
+  #   losses: 0
+  #   ties: 0
+  #   points: 0
+  #   team: |
+  # - rank: 1
+  #   nick: "Nome do Jogador"
+  #   pokepaste: "https://pokepast.es/xxxxxxxxxxxx" # opcional, só para crédito
+  #   wins: 0
+  #   losses: 0
+  #   ties: 0
+  #   points: 0
+  #   team: |

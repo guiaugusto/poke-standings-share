@@ -10,7 +10,7 @@ format: "VGC Reg I"        # opcional — pode remover esta linha
 prize: "Descrição do prêmio" # opcional — pode remover esta linha
 
 players:
-  # Copie o bloco abaixo para cada jogador, na ordem de colocação.
+  # Copie o bloco abaixo para cada jogador, não precisa ser na ordem de colocação.
   - rank: 1
     nick: "Nome do Jogador"
     pokepaste: "https://pokepast.es/xxxxxxxxxxxx" # opcional, só para crédito
