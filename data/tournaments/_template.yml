@@ -1,0 +1,32 @@
+# data/tournaments/_template.yml
+#
+# Copie este arquivo para um novo arquivo nesta mesma pasta (ex: copa-de-verao.yml)
+# e preencha os campos abaixo com os dados do seu torneio. Arquivos que
+# começam com "_" (como este) são ignorados pelo site.
+
+name: "Nome do Torneio"
+date: 2026-01-01          # formato AAAA-MM-DD
+format: "VGC Reg I"        # opcional — pode remover esta linha
+prize: "Descrição do prêmio" # opcional — pode remover esta linha
+
+players:
+  # Copie o bloco abaixo para cada jogador, na ordem de colocação.
+  - rank: 1
+    nick: "Nome do Jogador"
+    pokepaste: "https://pokepast.es/xxxxxxxxxxxx" # opcional, só para crédito
+    wins: 0
+    losses: 0
+    ties: 0
+    points: 0
+    # Cole abaixo o texto exportado do Pokepaste/Showdown (formato "Species @ Item").
+    # Mantenha a indentação igual à desta linha "team: |".
+    team: |
+      Species @ Item
+      Ability: Nome da Habilidade
+      Level: 50
+      EVs: 252 HP / 252 Atk / 4 Spe
+      Jolly Nature
+      - Move 1
+      - Move 2
+      - Move 3
+      - Move 4
