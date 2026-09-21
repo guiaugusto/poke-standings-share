@@ -10,6 +10,11 @@ interface Props {
 type SortKey = 'rank' | 'points' | 'wins';
 type SortDir = 'asc' | 'desc';
 
+function matchesQuery(player: PlayerWithTeam, query: string): boolean {
+  if (player.nick.toLowerCase().includes(query)) return true;
+  return player.parsedTeam.some((mon) => mon.species.toLowerCase().includes(query));
+}
+
 export function StandingsTable({ players, onSelectPlayer }: Props) {
   const [filter, setFilter] = useState('');
   const [sortKey, setSortKey] = useState<SortKey>('rank');
@@ -25,7 +30,8 @@ export function StandingsTable({ players, onSelectPlayer }: Props) {
   };
 
   const visiblePlayers = useMemo(() => {
-    const filtered = players.filter((p) => p.nick.toLowerCase().includes(filter.toLowerCase()));
+    const query = filter.trim().toLowerCase();
+    const filtered = query ? players.filter((p) => matchesQuery(p, query)) : players;
     const dirMultiplier = sortDir === 'asc' ? 1 : -1;
     return [...filtered].sort((a, b) => (a[sortKey] - b[sortKey]) * dirMultiplier);
   }, [players, filter, sortKey, sortDir]);
@@ -37,12 +43,21 @@ export function StandingsTable({ players, onSelectPlayer }: Props) {
 
   return (
     <div>
-      <label>
-        Buscar jogador
-        <input type="text" value={filter} onChange={(e) => setFilter(e.target.value)} />
-      </label>
+      <div className="standings-toolbar">
+        <label className="standings-search">
+          Search (player or Pokémon)
+          <input type="text" value={filter} onChange={(e) => setFilter(e.target.value)} />
+        </label>
+      </div>
       <div className="standings-table-wrapper">
         <table className="standings-table">
+          <colgroup>
+            <col className="col-rank" />
+            <col className="col-player" />
+            <col className="col-record" />
+            <col className="col-points" />
+            <col className="col-team" />
+          </colgroup>
           <thead>
             <tr>
               <th>
@@ -50,18 +65,18 @@ export function StandingsTable({ players, onSelectPlayer }: Props) {
                   Rank{sortIndicator('rank')}
                 </button>
               </th>
-              <th>Jogador</th>
+              <th>Player</th>
               <th>
                 <button type="button" onClick={() => handleSort('wins')}>
-                  V-D-E{sortIndicator('wins')}
+                  W-L-T{sortIndicator('wins')}
                 </button>
               </th>
               <th>
                 <button type="button" onClick={() => handleSort('points')}>
-                  Pontos{sortIndicator('points')}
+                  Points{sortIndicator('points')}
                 </button>
               </th>
-              <th>Time</th>
+              <th>Team</th>
             </tr>
           </thead>
           <tbody>
@@ -74,7 +89,7 @@ export function StandingsTable({ players, onSelectPlayer }: Props) {
                 <td>
                   <button
                     type="button"
-                    aria-label={`Ver time de ${player.nick}`}
+                    aria-label={`${player.nick}'s team`}
                     onClick={() => onSelectPlayer(player)}
                   >
                     {player.parsedTeam.map((mon) => (

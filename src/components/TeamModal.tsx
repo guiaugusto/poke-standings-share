@@ -23,9 +23,18 @@ export function TeamModal({ player, onClose }: Props) {
   const effectiveView: ModalView = hasAnyStats ? view : 'moves';
 
   return (
-    <div className="modal-overlay" role="dialog" aria-label={`Time de ${player.nick}`}>
+    <div
+      className="modal-overlay"
+      role="dialog"
+      aria-label={`${player.nick}'s team`}
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
+    >
       <div className="modal-content">
-        <button type="button" onClick={onClose}>Fechar</button>
+        <button type="button" className="modal-close" aria-label="Close" onClick={onClose}>
+          ×
+        </button>
         <h2>{player.nick}</h2>
 
         {hasAnyStats && (

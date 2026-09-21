@@ -18,7 +18,14 @@ describe('StandingsTable', () => {
 
   it('filters players by nickname as the user types', () => {
     render(<StandingsTable players={players} onSelectPlayer={() => {}} />);
-    fireEvent.change(screen.getByLabelText(/buscar/i), { target: { value: 'ana' } });
+    fireEvent.change(screen.getByLabelText(/search/i), { target: { value: 'ana' } });
+    expect(screen.getByText('Ana Souza')).toBeInTheDocument();
+    expect(screen.queryByText('Joseph Ugarte')).not.toBeInTheDocument();
+  });
+
+  it('also filters players by a Pokemon in their team', () => {
+    render(<StandingsTable players={players} onSelectPlayer={() => {}} />);
+    fireEvent.change(screen.getByLabelText(/search/i), { target: { value: 'gholdengo' } });
     expect(screen.getByText('Ana Souza')).toBeInTheDocument();
     expect(screen.queryByText('Joseph Ugarte')).not.toBeInTheDocument();
   });
@@ -26,28 +33,28 @@ describe('StandingsTable', () => {
   it('calls onSelectPlayer with the clicked player when the team thumbnail is clicked', () => {
     const onSelectPlayer = vi.fn();
     render(<StandingsTable players={players} onSelectPlayer={onSelectPlayer} />);
-    fireEvent.click(screen.getByRole('button', { name: /ver time de joseph ugarte/i }));
+    fireEvent.click(screen.getByRole('button', { name: /joseph ugarte's team/i }));
     expect(onSelectPlayer).toHaveBeenCalledWith(players[1]);
   });
 
-  it('sorts by points ascending when the Pontos header is clicked, and toggles to descending on a second click', () => {
+  it('sorts by points ascending when the Points header is clicked, and toggles to descending on a second click', () => {
     render(<StandingsTable players={players} onSelectPlayer={() => {}} />);
 
-    fireEvent.click(screen.getByRole('button', { name: /pontos/i }));
+    fireEvent.click(screen.getByRole('button', { name: /points/i }));
     let rows = screen.getAllByRole('row').slice(1);
     expect(rows[0]).toHaveTextContent('Ana Souza'); // 15 points
     expect(rows[1]).toHaveTextContent('Joseph Ugarte'); // 18 points
 
-    fireEvent.click(screen.getByRole('button', { name: /pontos/i }));
+    fireEvent.click(screen.getByRole('button', { name: /points/i }));
     rows = screen.getAllByRole('row').slice(1);
     expect(rows[0]).toHaveTextContent('Joseph Ugarte'); // 18 points, now descending
     expect(rows[1]).toHaveTextContent('Ana Souza'); // 15 points
   });
 
-  it('sorts by wins when the V-D-E header is clicked', () => {
+  it('sorts by wins when the W-L-T header is clicked', () => {
     render(<StandingsTable players={players} onSelectPlayer={() => {}} />);
 
-    fireEvent.click(screen.getByRole('button', { name: /v-d-e/i }));
+    fireEvent.click(screen.getByRole('button', { name: /w-l-t/i }));
     const rows = screen.getAllByRole('row').slice(1);
     expect(rows[0]).toHaveTextContent('Ana Souza'); // 5 wins
     expect(rows[1]).toHaveTextContent('Joseph Ugarte'); // 6 wins

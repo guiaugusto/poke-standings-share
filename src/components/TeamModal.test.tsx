@@ -56,11 +56,25 @@ describe('TeamModal', () => {
     expect(screen.getByText('Flare Blitz')).toBeInTheDocument();
   });
 
-  it('calls onClose when the close button is clicked', () => {
+  it('calls onClose when the close icon button is clicked', () => {
     const onClose = vi.fn();
     render(<TeamModal player={player} onClose={onClose} />);
-    fireEvent.click(screen.getByRole('button', { name: /fechar/i }));
+    fireEvent.click(screen.getByRole('button', { name: /close/i }));
     expect(onClose).toHaveBeenCalled();
+  });
+
+  it('calls onClose when clicking the overlay outside the modal content', () => {
+    const onClose = vi.fn();
+    render(<TeamModal player={player} onClose={onClose} />);
+    fireEvent.click(screen.getByRole('dialog'));
+    expect(onClose).toHaveBeenCalled();
+  });
+
+  it('does not call onClose when clicking inside the modal content', () => {
+    const onClose = vi.fn();
+    render(<TeamModal player={player} onClose={onClose} />);
+    fireEvent.click(screen.getByText('Joseph Ugarte'));
+    expect(onClose).not.toHaveBeenCalled();
   });
 
   it('hides the Stats tab entirely when no Pokemon in the team has any EV data (e.g. an OTS-only paste)', () => {
