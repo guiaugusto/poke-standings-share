@@ -3,6 +3,7 @@ export type StatKey = 'hp' | 'atk' | 'def' | 'spa' | 'spd' | 'spe';
 export interface ParsedPokemon {
   species: string;
   nickname?: string;
+  gender?: 'M' | 'F';
   item?: string;
   ability?: string;
   level?: number;
@@ -47,27 +48,34 @@ function isFieldLine(line: string): boolean {
   );
 }
 
-function parseHeaderLine(header: string): { species: string; nickname?: string; item?: string } | undefined {
+function parseHeaderLine(
+  header: string,
+): { species: string; nickname?: string; gender?: 'M' | 'F'; item?: string } | undefined {
   const [namePartRaw, itemRaw] = header.split(/\s+@\s+/);
   let namePart = namePartRaw?.trim();
   if (!namePart) return undefined;
 
   // A gender marker is its own trailing "(M)"/"(F)", separate from — and always
-  // after — a nickname/species parenthetical: "Merlin (Delphox) (M)". Strip it
-  // first so the nickname/species match below never has to treat it as part of
-  // that pair.
+  // after — a nickname/species parenthetical: "Merlin (Delphox) (M)". Capture
+  // and strip it first so the nickname/species match below never has to treat
+  // it as part of that pair. It's kept (not discarded): a handful of species
+  // (Basculegion, Indeedee, Meowstic, ...) have no gender-neutral sprite in
+  // PokeAPI's table — only "-male"/"-female" entries — so getSpriteUrl needs
+  // it to resolve the right image.
+  let gender: 'M' | 'F' | undefined;
   const genderMatch = namePart.match(/^(.*)\s\((M|F)\)$/);
   if (genderMatch) {
     namePart = genderMatch[1].trim();
+    gender = genderMatch[2] as 'M' | 'F';
   }
 
   const parenMatch = namePart.match(/^(.*?)\s*\(([^)]+)\)\s*$/);
   if (parenMatch) {
     const [, before, inside] = parenMatch;
-    return { species: inside.trim(), nickname: before.trim(), item: itemRaw?.trim() };
+    return { species: inside.trim(), nickname: before.trim(), gender, item: itemRaw?.trim() };
   }
 
-  return { species: namePart, item: itemRaw?.trim() };
+  return { species: namePart, gender, item: itemRaw?.trim() };
 }
 
 export function parseShowdownTeam(raw: string): ParsedPokemon[] {
@@ -91,6 +99,7 @@ export function parseShowdownTeam(raw: string): ParsedPokemon[] {
 
     const mon: ParsedPokemon = { species: header.species, moves: [] };
     if (header.nickname) mon.nickname = header.nickname;
+    if (header.gender) mon.gender = header.gender;
     if (header.item) mon.item = header.item;
 
     for (const line of rest) {

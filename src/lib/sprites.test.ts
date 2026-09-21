@@ -40,4 +40,25 @@ describe('getSpriteUrl', () => {
       'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/0.png',
     );
   });
+
+  it('resolves a species with no gender-neutral entry using the given gender (e.g. Basculegion)', () => {
+    expect(getSpriteUrl('Basculegion', 'M')).toBe(
+      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/902.png',
+    );
+    expect(getSpriteUrl('Basculegion', 'F')).toBe(
+      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10248.png',
+    );
+  });
+
+  it('falls back to whichever gendered variant exists when the requested gender has none (e.g. Pyroar has no female entry)', () => {
+    expect(getSpriteUrl('Pyroar', 'F')).toBe(
+      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/668.png',
+    );
+  });
+
+  it('falls back to a gendered variant even when no gender was given, rather than 404ing needlessly', () => {
+    expect(getSpriteUrl('Basculegion')).toBe(
+      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/902.png',
+    );
+  });
 });

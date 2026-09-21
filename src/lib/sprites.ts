@@ -30,8 +30,20 @@ function slugify(species: string): string {
     .replace(/[^a-z0-9-]/g, '');
 }
 
-export function getSpriteUrl(species: string): string {
+// A handful of species (Basculegion, Indeedee, Meowstic, Oinkologne, and a
+// few older ones) have no gender-neutral entry in PokeAPI's table at all —
+// male and female are different `pokemon` resources with different ids,
+// only reachable as "<species>-male"/"<species>-female". When the bare slug
+// isn't found, try the parsed gender's variant first, then whichever
+// gendered variant exists (some of these, like Pyroar, only have "-male"),
+// before finally giving up.
+export function getSpriteUrl(species: string, gender?: 'M' | 'F'): string {
   const slug = slugify(species);
-  const id = SPRITE_IDS[slug] ?? 0;
+  const id =
+    SPRITE_IDS[slug] ??
+    (gender && SPRITE_IDS[`${slug}-${gender === 'F' ? 'female' : 'male'}`]) ??
+    SPRITE_IDS[`${slug}-male`] ??
+    SPRITE_IDS[`${slug}-female`] ??
+    0;
   return `${SPRITE_BASE}/${id}.png`;
 }

@@ -27,7 +27,7 @@ export function MonStatsCard({ mon }: Props) {
       </div>
       <div className="mon-card-body mon-card-body--stats">
         <img
-          src={getSpriteUrl(mon.species)}
+          src={getSpriteUrl(mon.species, mon.gender)}
           alt={mon.species}
           width={56}
           height={56}

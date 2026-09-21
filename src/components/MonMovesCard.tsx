@@ -17,7 +17,7 @@ export function MonMovesCard({ mon }: Props) {
       <div className="mon-card-body">
         <div className="mon-card-left">
           <img
-            src={getSpriteUrl(mon.species)}
+            src={getSpriteUrl(mon.species, mon.gender)}
             alt={mon.species}
             width={56}
             height={56}

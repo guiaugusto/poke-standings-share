@@ -135,6 +135,46 @@ Modest Nature
     expect(mon.species).toBe('Ninetales-Alola');
   });
 
+  it('captures the gender marker instead of discarding it, for species where gender changes the sprite (e.g. Basculegion)', () => {
+    const raw = `
+Basculegend (Basculegion) (M) @ Life Orb
+Ability: Adaptability
+Adamant Nature
+- Last Respects
+- Protect
+- Wave Crash
+- Aqua Jet
+`;
+    const [mon] = parseShowdownTeam(raw);
+    expect(mon.gender).toBe('M');
+  });
+
+  it('captures a female gender marker the same way', () => {
+    const raw = `
+Ninetails (Ninetales-Alola) (F) @ Focus Sash
+Ability: Snow Warning
+Modest Nature
+- Blizzard
+- Moonblast
+- Aurora Veil
+- Protect
+`;
+    const [mon] = parseShowdownTeam(raw);
+    expect(mon.gender).toBe('F');
+  });
+
+  it('leaves gender undefined when no marker is present', () => {
+    const raw = `
+Raichu @ Raichunite Y
+Ability: Lightning Rod
+Timid Nature
+- Zap Cannon
+- Protect
+`;
+    const [mon] = parseShowdownTeam(raw);
+    expect(mon.gender).toBeUndefined();
+  });
+
   it('skips a malformed block with no species instead of throwing', () => {
     const raw = `
 Raichu @ Raichunite Y

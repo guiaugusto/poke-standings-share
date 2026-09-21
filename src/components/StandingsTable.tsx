@@ -78,7 +78,7 @@ export function StandingsTable({ players, onSelectPlayer }: Props) {
                     onClick={() => onSelectPlayer(player)}
                   >
                     {player.parsedTeam.map((mon) => (
-                      <img key={mon.species} src={getSpriteUrl(mon.species)} alt={mon.species} width={32} height={32} onError={(e) => { e.currentTarget.style.visibility = 'hidden'; }} />
+                      <img key={mon.species} src={getSpriteUrl(mon.species, mon.gender)} alt={mon.species} width={32} height={32} onError={(e) => { e.currentTarget.style.visibility = 'hidden'; }} />
                     ))}
                   </button>
                 </td>
