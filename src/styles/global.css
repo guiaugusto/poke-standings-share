@@ -1,1 +1,36 @@
-/* filled in Task 7 */
+:root {
+  color-scheme: light dark;
+  font-family: system-ui, sans-serif;
+}
+
+body {
+  margin: 0 auto;
+  max-width: 960px;
+  padding: 0 1rem 3rem;
+}
+
+.site-header {
+  padding: 1rem 0;
+  font-weight: bold;
+}
+
+.site-header a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.tournament-list {
+  list-style: none;
+  padding: 0;
+}
+
+.tournament-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.tournament-meta {
+  color: #666;
+}

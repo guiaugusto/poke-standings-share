@@ -1,12 +1,21 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { loadTournaments } from '../lib/tournaments';
+
+const tournaments = loadTournaments();
 ---
-<html lang="pt-BR">
-  <head>
-    <meta charset="utf-8" />
-    <title>Poke Standings Share</title>
-  </head>
-  <body>
-    <h1>Poke Standings Share</h1>
-    <p>Scaffold OK.</p>
-  </body>
-</html>
+<BaseLayout title="Torneios">
+  <h1>Torneios</h1>
+  {tournaments.length === 0 && <p>Nenhum torneio publicado ainda.</p>}
+  <ul class="tournament-list">
+    {tournaments.map((t) => (
+      <li>
+        <a href={`${import.meta.env.BASE_URL}tournaments/${t.slug}/`}>{t.name}</a>
+        <span class="tournament-meta">
+          {t.date}
+          {t.format && ` · ${t.format}`}
+        </span>
+      </li>
+    ))}
+  </ul>
+</BaseLayout>
