@@ -9,6 +9,7 @@ const mon: ParsedPokemon = {
   ability: 'Intimidate',
   nature: 'Careful',
   teraType: 'Grass',
+  gender: 'M',
   moves: ['Flare Blitz', 'Fake Out', 'Not A Real Move'],
 };
 
@@ -32,27 +33,52 @@ describe('MonMovesCard', () => {
     expect(moveList).toContainElement(screen.getByText('Flare Blitz'));
   });
 
-  it('renders the Tera type as a colored type badge', () => {
+  it('renders an item icon alongside the item name', () => {
     render(<MonMovesCard mon={mon} />);
-    expect(screen.getByText('Grass')).toHaveStyle({ backgroundColor: '#78C850' });
+    const icon = screen.getByAltText('Sitrus Berry');
+    expect(icon).toHaveAttribute(
+      'src',
+      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/sitrus-berry.png',
+    );
   });
 
-  it('renders each move with its type badge when the type is known', () => {
+  it('renders the Tera type as a type icon', () => {
+    render(<MonMovesCard mon={mon} />);
+    const icon = screen.getByAltText('Grass');
+    expect(icon).toHaveAttribute(
+      'src',
+      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-ix/scarlet-violet/small/12.png',
+    );
+  });
+
+  it('renders each move with its type icon when the type is known', () => {
     render(<MonMovesCard mon={mon} />);
     expect(screen.getByText('Flare Blitz')).toBeInTheDocument();
-    expect(screen.getByText('Fire')).toHaveStyle({ backgroundColor: '#F08030' });
+    expect(screen.getAllByAltText('Fire')).toHaveLength(1);
     expect(screen.getByText('Fake Out')).toBeInTheDocument();
-    expect(screen.getByText('Normal')).toHaveStyle({ backgroundColor: '#A8A878' });
+    expect(screen.getAllByAltText('Normal')).toHaveLength(1);
   });
 
-  it('renders a move with no badge when its type is not in the table', () => {
+  it('renders a move with no icon when its type is not in the table', () => {
     render(<MonMovesCard mon={mon} />);
     expect(screen.getByText('Not A Real Move')).toBeInTheDocument();
   });
 
-  it('omits the Tera badge entirely when the Pokemon has no Tera type', () => {
+  it('omits the Tera icon entirely when the Pokemon has no Tera type', () => {
     const monWithoutTera: ParsedPokemon = { ...mon, teraType: undefined };
     render(<MonMovesCard mon={monWithoutTera} />);
-    expect(screen.queryByText('Grass')).not.toBeInTheDocument();
+    expect(screen.queryByAltText('Grass')).not.toBeInTheDocument();
+  });
+
+  it('shows the gender marker next to the species name when known', () => {
+    render(<MonMovesCard mon={mon} />);
+    expect(screen.getByText('(M)')).toBeInTheDocument();
+  });
+
+  it('omits the gender marker when gender is not known', () => {
+    const monWithoutGender: ParsedPokemon = { ...mon, gender: undefined };
+    render(<MonMovesCard mon={monWithoutGender} />);
+    expect(screen.queryByText('(M)')).not.toBeInTheDocument();
+    expect(screen.queryByText('(F)')).not.toBeInTheDocument();
   });
 });

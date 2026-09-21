@@ -1,7 +1,7 @@
 import type { ParsedPokemon, StatKey } from '../lib/showdownParser';
 import { getSpriteUrl } from '../lib/sprites';
 import { StatBar } from './StatBar';
-import { TypeBadge } from './TypeBadge';
+import { TypeIcon } from './TypeIcon';
 
 interface Props {
   mon: ParsedPokemon;
@@ -22,8 +22,11 @@ export function MonStatsCard({ mon }: Props) {
   return (
     <div className="mon-card">
       <div className="mon-card-header">
-        <span className="mon-card-name">{mon.species}</span>
-        {mon.teraType && <TypeBadge type={mon.teraType.toLowerCase()} />}
+        <span className="mon-card-name">
+          {mon.species}
+          {mon.gender && <span className="mon-card-gender"> ({mon.gender})</span>}
+        </span>
+        {mon.teraType && <TypeIcon type={mon.teraType.toLowerCase()} />}
       </div>
       <div className="mon-card-body mon-card-body--stats">
         <img

@@ -1,7 +1,8 @@
 import type { ParsedPokemon } from '../lib/showdownParser';
 import { getSpriteUrl } from '../lib/sprites';
 import { getMoveType } from '../lib/moveTypes';
-import { TypeBadge } from './TypeBadge';
+import { getItemIconUrl } from '../lib/itemIcons';
+import { TypeIcon } from './TypeIcon';
 
 interface Props {
   mon: ParsedPokemon;
@@ -11,8 +12,11 @@ export function MonMovesCard({ mon }: Props) {
   return (
     <div className="mon-card">
       <div className="mon-card-header">
-        <span className="mon-card-name">{mon.species}</span>
-        {mon.teraType && <TypeBadge type={mon.teraType.toLowerCase()} />}
+        <span className="mon-card-name">
+          {mon.species}
+          {mon.gender && <span className="mon-card-gender"> ({mon.gender})</span>}
+        </span>
+        {mon.teraType && <TypeIcon type={mon.teraType.toLowerCase()} />}
       </div>
       <div className="mon-card-body">
         <div className="mon-card-left">
@@ -26,7 +30,20 @@ export function MonMovesCard({ mon }: Props) {
             }}
           />
           {mon.ability && <p>{mon.ability}</p>}
-          {mon.item && <p>{mon.item}</p>}
+          {mon.item && (
+            <p className="mon-card-item">
+              <img
+                src={getItemIconUrl(mon.item)}
+                alt={mon.item}
+                width={16}
+                height={16}
+                onError={(e) => {
+                  e.currentTarget.style.visibility = 'hidden';
+                }}
+              />
+              {mon.item}
+            </p>
+          )}
           {mon.nature && <p className="mon-card-nature">{mon.nature}</p>}
         </div>
         <ul className="move-list">
@@ -34,7 +51,7 @@ export function MonMovesCard({ mon }: Props) {
             const type = getMoveType(move);
             return (
               <li key={move}>
-                {type && <TypeBadge type={type} />}
+                {type && <TypeIcon type={type} />}
                 {move}
               </li>
             );
