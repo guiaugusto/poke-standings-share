@@ -1,21 +1,18 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { TournamentSearch } from '../components/TournamentSearch';
 import { loadTournaments } from '../lib/tournaments';
 
 const tournaments = loadTournaments();
 ---
 <BaseLayout title="Torneios">
   <h1>Torneios</h1>
-  {tournaments.length === 0 && <p>Nenhum torneio publicado ainda.</p>}
-  <ul class="tournament-list">
-    {tournaments.map((t) => (
-      <li>
-        <a href={`${import.meta.env.BASE_URL}tournaments/${t.slug}/`}>{t.name}</a>
-        <span class="tournament-meta">
-          {t.date}
-          {t.format && ` · ${t.format}`}
-        </span>
-      </li>
-    ))}
-  </ul>
+  {tournaments.length === 0 ? (
+    <p>Nenhum torneio publicado ainda.</p>
+  ) : (
+    <TournamentSearch
+      client:load
+      tournaments={tournaments.map((t) => ({ slug: t.slug, name: t.name, date: t.date, format: t.format }))}
+    />
+  )}
 </BaseLayout>

@@ -41,50 +41,52 @@ export function StandingsTable({ players, onSelectPlayer }: Props) {
         Buscar jogador
         <input type="text" value={filter} onChange={(e) => setFilter(e.target.value)} />
       </label>
-      <table>
-        <thead>
-          <tr>
-            <th>
-              <button type="button" onClick={() => handleSort('rank')}>
-                Rank{sortIndicator('rank')}
-              </button>
-            </th>
-            <th>Jogador</th>
-            <th>
-              <button type="button" onClick={() => handleSort('wins')}>
-                V-D-E{sortIndicator('wins')}
-              </button>
-            </th>
-            <th>
-              <button type="button" onClick={() => handleSort('points')}>
-                Pontos{sortIndicator('points')}
-              </button>
-            </th>
-            <th>Time</th>
-          </tr>
-        </thead>
-        <tbody>
-          {visiblePlayers.map((player) => (
-            <tr key={player.nick}>
-              <td>{player.rank}</td>
-              <td>{player.nick}</td>
-              <td>{player.wins}-{player.losses}-{player.ties}</td>
-              <td>{player.points}</td>
-              <td>
-                <button
-                  type="button"
-                  aria-label={`Ver time de ${player.nick}`}
-                  onClick={() => onSelectPlayer(player)}
-                >
-                  {player.parsedTeam.map((mon) => (
-                    <img key={mon.species} src={getSpriteUrl(mon.species)} alt={mon.species} width={32} height={32} onError={(e) => { e.currentTarget.style.visibility = 'hidden'; }} />
-                  ))}
+      <div className="standings-table-wrapper">
+        <table className="standings-table">
+          <thead>
+            <tr>
+              <th>
+                <button type="button" onClick={() => handleSort('rank')}>
+                  Rank{sortIndicator('rank')}
                 </button>
-              </td>
+              </th>
+              <th>Jogador</th>
+              <th>
+                <button type="button" onClick={() => handleSort('wins')}>
+                  V-D-E{sortIndicator('wins')}
+                </button>
+              </th>
+              <th>
+                <button type="button" onClick={() => handleSort('points')}>
+                  Pontos{sortIndicator('points')}
+                </button>
+              </th>
+              <th>Time</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {visiblePlayers.map((player) => (
+              <tr key={player.nick}>
+                <td>{player.rank}</td>
+                <td>{player.nick}</td>
+                <td>{player.wins}-{player.losses}-{player.ties}</td>
+                <td>{player.points}</td>
+                <td>
+                  <button
+                    type="button"
+                    aria-label={`Ver time de ${player.nick}`}
+                    onClick={() => onSelectPlayer(player)}
+                  >
+                    {player.parsedTeam.map((mon) => (
+                      <img key={mon.species} src={getSpriteUrl(mon.species)} alt={mon.species} width={32} height={32} onError={(e) => { e.currentTarget.style.visibility = 'hidden'; }} />
+                    ))}
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

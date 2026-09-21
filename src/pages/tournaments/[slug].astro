@@ -20,7 +20,7 @@ interface Props {
 const { tournament } = Astro.props as Props;
 const vm = buildTournamentViewModel(tournament);
 ---
-<BaseLayout title={vm.name}>
+<BaseLayout title={vm.name} wide>
   <h1>{vm.name}</h1>
   <p>
     {vm.date}

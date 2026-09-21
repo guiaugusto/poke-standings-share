@@ -1,11 +1,16 @@
 ---
 import '../styles/global.css';
+import Topbar from '../components/Topbar.astro';
 
 interface Props {
   title: string;
+  // A tournament page's Standings/Statistics content wants to fill the
+  // viewport horizontally; every other page uses the default, narrower
+  // reading-width container.
+  wide?: boolean;
 }
 
-const { title } = Astro.props as Props;
+const { title, wide = false } = Astro.props as Props;
 ---
 <html lang="pt-BR">
   <head>
@@ -14,10 +19,8 @@ const { title } = Astro.props as Props;
     <title>{title} — Poke Standings</title>
   </head>
   <body>
-    <header class="site-header">
-      <a href={import.meta.env.BASE_URL}>Poke Standings</a>
-    </header>
-    <main>
+    <Topbar />
+    <main class={`page-container ${wide ? 'page-container--wide' : ''}`}>
       <slot />
     </main>
   </body>
