@@ -10,9 +10,16 @@ const player: PlayerWithTeam = {
   losses: 1,
   ties: 0,
   points: 18,
-  team: '',
   parsedTeam: [
-    { species: 'Incineroar', item: 'Sitrus Berry', ability: 'Intimidate', nature: 'Careful', teraType: 'Grass', moves: ['Flare Blitz', 'Fake Out'] },
+    {
+      species: 'Incineroar',
+      item: 'Sitrus Berry',
+      ability: 'Intimidate',
+      nature: 'Careful',
+      teraType: 'Grass',
+      evs: { hp: 240, def: 88, spa: 16, spe: 184 },
+      moves: ['Flare Blitz', 'Fake Out'],
+    },
   ],
 };
 
@@ -31,6 +38,11 @@ describe('TeamModal', () => {
     expect(screen.getByText('Careful')).toBeInTheDocument();
     expect(screen.getByText(/Tera: Grass/)).toBeInTheDocument();
     expect(screen.getByText('Flare Blitz')).toBeInTheDocument();
+  });
+
+  it('renders the EV spread in conventional VGC format when evs are present', () => {
+    render(<TeamModal player={player} onClose={() => {}} />);
+    expect(screen.getByText('EVs: 240 HP / 88 Def / 16 SpA / 184 Spe')).toBeInTheDocument();
   });
 
   it('calls onClose when the close button is clicked', () => {
