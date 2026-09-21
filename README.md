@@ -10,7 +10,7 @@ backend, sem banco de dados.
    próprio repositório.
 2. No seu novo repositório, vá em **Settings → Pages** e configure a fonte
    como **GitHub Actions**.
-3. Para publicar um torneio nome:
+3. Para publicar um torneio novo:
    - Copie `data/tournaments/_template.yml` para um novo arquivo na mesma
      pasta (ex: `data/tournaments/copa-de-verao.yml`).
    - Preencha os campos do torneio e de cada jogador, colando o texto do
@@ -18,6 +18,10 @@ backend, sem banco de dados.
    - Faça commit e push para a branch `master`.
 4. O GitHub Actions builda e publica o site automaticamente. O novo
    torneio aparece na home assim que o deploy terminar.
+
+Os sprites dos Pokémon são carregados em tempo de renderização a partir do
+CDN de sprites do Pokémon Showdown — diferente dos dados de torneios e
+times, que ficam totalmente autocontidos no YAML.
 
 ## Desenvolvimento local
 
