@@ -31,6 +31,11 @@ describe('buildTournamentViewModel', () => {
     expect(vm.players[0].points).toBe(18);
   });
 
+  it('omits the raw team text from the player, keeping only parsedTeam', () => {
+    const vm = buildTournamentViewModel(tournament);
+    expect(vm.players[0]).not.toHaveProperty('team');
+  });
+
   it('computes usageStats across all players parsed teams', () => {
     const vm = buildTournamentViewModel(tournament);
     expect(vm.usageStats.topSpecies).toEqual([{ species: 'Incineroar', count: 1 }]);
