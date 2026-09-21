@@ -22,11 +22,11 @@ export function TournamentSearch({ tournaments }: Props) {
   return (
     <div>
       <label>
-        Buscar torneio
+        Search tournament
         <input type="text" value={query} onChange={(e) => setQuery(e.target.value)} />
       </label>
       {visible.length === 0 ? (
-        <p>Nenhum torneio encontrado.</p>
+        <p>No tournament found.</p>
       ) : (
         <ul className="tournament-list">
           {visible.map((t) => (

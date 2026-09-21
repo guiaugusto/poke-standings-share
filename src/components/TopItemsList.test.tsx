@@ -22,6 +22,6 @@ describe('TopItemsList', () => {
 
   it('shows an empty-state message when there is no item data', () => {
     render(<TopItemsList items={[]} totalPlayers={0} />);
-    expect(screen.getByText(/nenhum dado/i)).toBeInTheDocument();
+    expect(screen.getByText(/no usage data/i)).toBeInTheDocument();
   });
 });

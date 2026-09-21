@@ -22,6 +22,6 @@ describe('TopSpeciesGrid', () => {
 
   it('shows an empty-state message when there is no species data', () => {
     render(<TopSpeciesGrid species={[]} totalPlayers={0} />);
-    expect(screen.getByText(/nenhum dado/i)).toBeInTheDocument();
+    expect(screen.getByText(/no usage data/i)).toBeInTheDocument();
   });
 });

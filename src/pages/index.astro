@@ -5,10 +5,10 @@ import { loadTournaments } from '../lib/tournaments';
 
 const tournaments = loadTournaments();
 ---
-<BaseLayout title="Torneios">
-  <h1>Torneios</h1>
+<BaseLayout title="Tournaments">
+  <h1>Tournaments</h1>
   {tournaments.length === 0 ? (
-    <p>Nenhum torneio publicado ainda.</p>
+    <p>No tournaments published yet.</p>
   ) : (
     <TournamentSearch
       client:load

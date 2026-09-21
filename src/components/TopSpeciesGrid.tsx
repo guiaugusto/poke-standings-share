@@ -15,7 +15,7 @@ export function TopSpeciesGrid({ species, totalPlayers }: Props) {
   const top10 = species.slice(0, 10);
 
   if (top10.length === 0) {
-    return <p>Nenhum dado de uso disponível ainda.</p>;
+    return <p>No usage data available yet.</p>;
   }
 
   return (

@@ -22,7 +22,7 @@ export function OtherSpeciesTable({ species, totalPlayers }: Props) {
       <thead>
         <tr>
           <th>Pokémon</th>
-          <th>Uso</th>
+          <th>Usage</th>
         </tr>
       </thead>
       <tbody>

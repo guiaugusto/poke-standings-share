@@ -26,7 +26,7 @@ const vm = buildTournamentViewModel(tournament);
     {vm.date}
     {vm.format && ` · ${vm.format}`}
   </p>
-  {vm.prize && <p>Premiação: {vm.prize}</p>}
+  {vm.prize && <p>Prize: {vm.prize}</p>}
 
   <TournamentInteractive client:visible players={vm.players} usageStats={vm.usageStats} />
 </BaseLayout>
