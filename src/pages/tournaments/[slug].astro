@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TournamentInteractive from '../../components/TournamentInteractive';
+import { loadTournaments } from '../../lib/tournaments';
+import { buildTournamentViewModel } from '../../lib/tournamentViewModel';
+import type { Tournament } from '../../lib/tournaments';
+
+export async function getStaticPaths() {
+  const tournaments = loadTournaments();
+  return tournaments.map((tournament) => ({
+    params: { slug: tournament.slug },
+    props: { tournament },
+  }));
+}
+
+interface Props {
+  tournament: Tournament;
+}
+
+const { tournament } = Astro.props as Props;
+const vm = buildTournamentViewModel(tournament);
+---
+<BaseLayout title={vm.name}>
+  <h1>{vm.name}</h1>
+  <p>
+    {vm.date}
+    {vm.format && ` · ${vm.format}`}
+  </p>
+  {vm.prize && <p>Premiação: {vm.prize}</p>}
+
+  <TournamentInteractive client:load players={vm.players} usageStats={vm.usageStats} />
+</BaseLayout>
