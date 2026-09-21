@@ -4,8 +4,8 @@ import { StandingsTable } from './StandingsTable';
 import type { PlayerWithTeam } from '../lib/tournamentViewModel';
 
 const players: PlayerWithTeam[] = [
-  { rank: 2, nick: 'Ana Souza', wins: 5, losses: 2, ties: 0, points: 15, team: '', parsedTeam: [{ species: 'Gholdengo', moves: [] }] },
-  { rank: 1, nick: 'Joseph Ugarte', wins: 6, losses: 1, ties: 0, points: 18, team: '', parsedTeam: [{ species: 'Incineroar', moves: [] }] },
+  { rank: 2, nick: 'Ana Souza', wins: 5, losses: 2, ties: 0, points: 15, parsedTeam: [{ species: 'Gholdengo', moves: [] }] },
+  { rank: 1, nick: 'Joseph Ugarte', wins: 6, losses: 1, ties: 0, points: 18, parsedTeam: [{ species: 'Incineroar', moves: [] }] },
 ];
 
 describe('StandingsTable', () => {
@@ -28,5 +28,28 @@ describe('StandingsTable', () => {
     render(<StandingsTable players={players} onSelectPlayer={onSelectPlayer} />);
     fireEvent.click(screen.getByRole('button', { name: /ver time de joseph ugarte/i }));
     expect(onSelectPlayer).toHaveBeenCalledWith(players[1]);
+  });
+
+  it('sorts by points ascending when the Pontos header is clicked, and toggles to descending on a second click', () => {
+    render(<StandingsTable players={players} onSelectPlayer={() => {}} />);
+
+    fireEvent.click(screen.getByRole('button', { name: /pontos/i }));
+    let rows = screen.getAllByRole('row').slice(1);
+    expect(rows[0]).toHaveTextContent('Ana Souza'); // 15 points
+    expect(rows[1]).toHaveTextContent('Joseph Ugarte'); // 18 points
+
+    fireEvent.click(screen.getByRole('button', { name: /pontos/i }));
+    rows = screen.getAllByRole('row').slice(1);
+    expect(rows[0]).toHaveTextContent('Joseph Ugarte'); // 18 points, now descending
+    expect(rows[1]).toHaveTextContent('Ana Souza'); // 15 points
+  });
+
+  it('sorts by wins when the V-D-E header is clicked', () => {
+    render(<StandingsTable players={players} onSelectPlayer={() => {}} />);
+
+    fireEvent.click(screen.getByRole('button', { name: /v-d-e/i }));
+    const rows = screen.getAllByRole('row').slice(1);
+    expect(rows[0]).toHaveTextContent('Ana Souza'); // 5 wins
+    expect(rows[1]).toHaveTextContent('Joseph Ugarte'); // 6 wins
   });
 });

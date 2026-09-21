@@ -7,13 +7,33 @@ interface Props {
   onSelectPlayer: (player: PlayerWithTeam) => void;
 }
 
+type SortKey = 'rank' | 'points' | 'wins';
+type SortDir = 'asc' | 'desc';
+
 export function StandingsTable({ players, onSelectPlayer }: Props) {
   const [filter, setFilter] = useState('');
+  const [sortKey, setSortKey] = useState<SortKey>('rank');
+  const [sortDir, setSortDir] = useState<SortDir>('asc');
+
+  const handleSort = (key: SortKey) => {
+    if (key === sortKey) {
+      setSortDir((dir) => (dir === 'asc' ? 'desc' : 'asc'));
+    } else {
+      setSortKey(key);
+      setSortDir('asc');
+    }
+  };
 
   const visiblePlayers = useMemo(() => {
     const filtered = players.filter((p) => p.nick.toLowerCase().includes(filter.toLowerCase()));
-    return [...filtered].sort((a, b) => a.rank - b.rank);
-  }, [players, filter]);
+    const dirMultiplier = sortDir === 'asc' ? 1 : -1;
+    return [...filtered].sort((a, b) => (a[sortKey] - b[sortKey]) * dirMultiplier);
+  }, [players, filter, sortKey, sortDir]);
+
+  const sortIndicator = (key: SortKey) => {
+    if (key !== sortKey) return '';
+    return sortDir === 'asc' ? ' ▲' : ' ▼';
+  };
 
   return (
     <div>
@@ -24,10 +44,22 @@ export function StandingsTable({ players, onSelectPlayer }: Props) {
       <table>
         <thead>
           <tr>
-            <th>Rank</th>
+            <th>
+              <button type="button" onClick={() => handleSort('rank')}>
+                Rank{sortIndicator('rank')}
+              </button>
+            </th>
             <th>Jogador</th>
-            <th>V-D-E</th>
-            <th>Pontos</th>
+            <th>
+              <button type="button" onClick={() => handleSort('wins')}>
+                V-D-E{sortIndicator('wins')}
+              </button>
+            </th>
+            <th>
+              <button type="button" onClick={() => handleSort('points')}>
+                Pontos{sortIndicator('points')}
+              </button>
+            </th>
             <th>Time</th>
           </tr>
         </thead>
@@ -45,7 +77,7 @@ export function StandingsTable({ players, onSelectPlayer }: Props) {
                   onClick={() => onSelectPlayer(player)}
                 >
                   {player.parsedTeam.map((mon) => (
-                    <img key={mon.species} src={getSpriteUrl(mon.species)} alt={mon.species} width={32} height={32} />
+                    <img key={mon.species} src={getSpriteUrl(mon.species)} alt={mon.species} width={32} height={32} onError={(e) => { e.currentTarget.style.visibility = 'hidden'; }} />
                   ))}
                 </button>
               </td>
