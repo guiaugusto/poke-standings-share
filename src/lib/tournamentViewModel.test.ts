@@ -41,6 +41,36 @@ describe('buildTournamentViewModel', () => {
     expect(vm.usageStats.topSpecies).toEqual([{ species: 'Incineroar', count: 1 }]);
   });
 
+  it('does not trim topSpecies, since the Statistics tab needs the full list beyond the top 10', () => {
+    const players = Array.from({ length: 12 }, (_, i) => ({
+      rank: i + 1,
+      nick: `Player ${i}`,
+      wins: 0,
+      losses: 0,
+      ties: 0,
+      points: 0,
+      team: `Species${i} @ Focus Sash\nAbility: Levitate\nLevel: 50\nJolly Nature\n- Protect`,
+    }));
+    const manyTournament: Tournament = { ...tournament, players };
+    const vm = buildTournamentViewModel(manyTournament);
+    expect(vm.usageStats.topSpecies).toHaveLength(12);
+  });
+
+  it('still trims topItems to the top 10, since only a top-10 list is ever displayed', () => {
+    const players = Array.from({ length: 12 }, (_, i) => ({
+      rank: i + 1,
+      nick: `Player ${i}`,
+      wins: 0,
+      losses: 0,
+      ties: 0,
+      points: 0,
+      team: `Pikachu @ Item${i}\nAbility: Static\nLevel: 50\nJolly Nature\n- Thunderbolt`,
+    }));
+    const manyTournament: Tournament = { ...tournament, players };
+    const vm = buildTournamentViewModel(manyTournament);
+    expect(vm.usageStats.topItems).toHaveLength(10);
+  });
+
   it('preserves tournament-level fields', () => {
     const vm = buildTournamentViewModel(tournament);
     expect(vm.name).toBe('Copa Primavera VGC');

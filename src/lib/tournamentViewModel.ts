@@ -15,15 +15,20 @@ export interface TournamentViewModel extends Omit<Tournament, 'players'> {
   usageStats: UsageStats;
 }
 
-// Usage stats are only ever displayed as a top-10 list (see
-// UsageStatsChart's `.slice(0, 10)` calls), so trimming each list here keeps
-// an oversized tournament's long tail out of the page payload that gets
-// shipped to the client.
+// Items, pairs, and trios are only ever displayed as a top-10 list, so
+// trimming those lists here keeps an oversized tournament's long tail out
+// of the page payload. topSpecies is NOT trimmed: the Statistics tab shows
+// a top-10 grid plus a table of every other species used, so the full list
+// is needed. Species/count pairs are small (a name + a number), so shipping
+// the full list — realistically well under a hundred entries even for a
+// large tournament — doesn't reintroduce the payload-bloat problem that
+// trimming was originally added to solve (that was about duplicated raw
+// multi-line team text, not small count records).
 const MAX_USAGE_STATS_ENTRIES = 10;
 
 function trimUsageStats(stats: UsageStats): UsageStats {
   return {
-    topSpecies: stats.topSpecies.slice(0, MAX_USAGE_STATS_ENTRIES),
+    topSpecies: stats.topSpecies,
     topItems: stats.topItems.slice(0, MAX_USAGE_STATS_ENTRIES),
     topPairs: stats.topPairs.slice(0, MAX_USAGE_STATS_ENTRIES),
     topTrios: stats.topTrios.slice(0, MAX_USAGE_STATS_ENTRIES),
