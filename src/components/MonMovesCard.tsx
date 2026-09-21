@@ -20,16 +20,18 @@ export function MonMovesCard({ mon }: Props) {
       </div>
       <div className="mon-card-body">
         <div className="mon-card-left">
-          <img
-            src={getSpriteUrl(mon.species, mon.gender)}
-            alt={mon.species}
-            width={80}
-            height={80}
-            onError={(e) => {
-              e.currentTarget.style.visibility = 'hidden';
-            }}
-          />
-          {mon.ability && <p>{mon.ability}</p>}
+          <div className="mon-card-left-top">
+            <img
+              src={getSpriteUrl(mon.species, mon.gender)}
+              alt={mon.species}
+              width={40}
+              height={40}
+              onError={(e) => {
+                e.currentTarget.style.visibility = 'hidden';
+              }}
+            />
+            {mon.ability && <p>{mon.ability}</p>}
+          </div>
           {mon.item && (
             <p className="mon-card-item">
               <img

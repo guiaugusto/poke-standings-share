@@ -212,10 +212,16 @@ body {
 .mon-card-left {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 0.25rem;
+  align-items: flex-start;
+  gap: 0.35rem;
   flex: 0 0 auto;
-  min-width: 88px;
+  min-width: 100px;
+}
+
+.mon-card-left-top {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
 }
 
 .mon-card p {
@@ -224,7 +230,7 @@ body {
 
 .mon-card-left p {
   font-size: 0.9rem;
-  text-align: center;
+  text-align: left;
 }
 
 .mon-card-nature {
@@ -235,7 +241,7 @@ body {
 .mon-card-item {
   display: flex !important;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 0.3rem;
 }
 
