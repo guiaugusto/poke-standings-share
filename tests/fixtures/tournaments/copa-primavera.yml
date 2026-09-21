@@ -1,0 +1,37 @@
+name: "Copa Primavera VGC"
+date: 2026-03-15
+format: "VGC Reg I"
+prize: "R$500 em produtos"
+players:
+  - rank: 1
+    nick: "Joseph Ugarte"
+    pokepaste: "https://pokepast.es/34ec1c9714792760"
+    wins: 6
+    losses: 1
+    ties: 0
+    points: 18
+    team: |
+      Raichu @ Raichunite Y
+      Ability: Lightning Rod
+      Level: 50
+      EVs: 240 HP / 88 Def / 16 SpA / 184 Spe
+      Timid Nature
+      - Zap Cannon
+      - Focus Blast
+      - Fake Out
+      - Protect
+  - rank: 2
+    nick: "Ana Souza"
+    wins: 5
+    losses: 2
+    ties: 0
+    points: 15
+    team: |
+      Incineroar @ Sitrus Berry
+      Ability: Intimidate
+      Level: 50
+      Careful Nature
+      - Flare Blitz
+      - Throat Chop
+      - Parting Shot
+      - Fake Out
