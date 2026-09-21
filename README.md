@@ -19,8 +19,10 @@ backend, sem banco de dados.
 4. O GitHub Actions builda e publica o site automaticamente. O novo
    torneio aparece na home assim que o deploy terminar.
 
+Guia completo, com todos os campos explicados: [docs/como-cadastrar-torneios.md](docs/como-cadastrar-torneios.md).
+
 Os sprites dos Pokémon são carregados em tempo de renderização a partir do
-CDN de sprites do Pokémon Showdown — diferente dos dados de torneios e
+repositório de sprites do PokeAPI — diferente dos dados de torneios e
 times, que ficam totalmente autocontidos no YAML.
 
 ## Desenvolvimento local
