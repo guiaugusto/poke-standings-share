@@ -21,6 +21,17 @@ describe('MonMovesCard', () => {
     expect(screen.getByText('Careful')).toBeInTheDocument();
   });
 
+  it('puts sprite/item/ability/nature on the left and the move list on the right', () => {
+    const { container } = render(<MonMovesCard mon={mon} />);
+    const left = container.querySelector('.mon-card-left');
+    const moveList = container.querySelector('.move-list');
+    expect(left).toContainElement(screen.getByAltText('Incineroar'));
+    expect(left).toContainElement(screen.getByText('Sitrus Berry'));
+    expect(left).toContainElement(screen.getByText('Intimidate'));
+    expect(left).toContainElement(screen.getByText('Careful'));
+    expect(moveList).toContainElement(screen.getByText('Flare Blitz'));
+  });
+
   it('renders the Tera type as a colored type badge', () => {
     render(<MonMovesCard mon={mon} />);
     expect(screen.getByText('Grass')).toHaveStyle({ backgroundColor: '#78C850' });
