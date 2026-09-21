@@ -1,33 +1,18 @@
+import { useState } from 'react';
 import type { PlayerWithTeam } from '../lib/tournamentViewModel';
-import type { StatKey } from '../lib/showdownParser';
-import { getSpriteUrl } from '../lib/sprites';
+import { MonMovesCard } from './MonMovesCard';
+import { MonStatsCard } from './MonStatsCard';
 
 interface Props {
   player: PlayerWithTeam | null;
   onClose: () => void;
 }
 
-const EV_LABELS: Record<StatKey, string> = {
-  hp: 'HP',
-  atk: 'Atk',
-  def: 'Def',
-  spa: 'SpA',
-  spd: 'SpD',
-  spe: 'Spe',
-};
-
-const EV_ORDER: StatKey[] = ['hp', 'atk', 'def', 'spa', 'spd', 'spe'];
-
-function formatEvs(evs: Partial<Record<StatKey, number>> | undefined): string | undefined {
-  if (!evs) return undefined;
-  const parts = EV_ORDER.filter((key) => evs[key] !== undefined).map(
-    (key) => `${evs[key]} ${EV_LABELS[key]}`,
-  );
-  if (parts.length === 0) return undefined;
-  return parts.join(' / ');
-}
+type ModalView = 'moves' | 'stats';
 
 export function TeamModal({ player, onClose }: Props) {
+  const [view, setView] = useState<ModalView>('moves');
+
   if (!player) return null;
 
   return (
@@ -35,26 +20,36 @@ export function TeamModal({ player, onClose }: Props) {
       <div className="modal-content">
         <button type="button" onClick={onClose}>Fechar</button>
         <h2>{player.nick}</h2>
+
+        <div className="tabs" role="tablist">
+          <button
+            type="button"
+            role="tab"
+            aria-selected={view === 'moves'}
+            className={view === 'moves' ? 'tab-button active' : 'tab-button'}
+            onClick={() => setView('moves')}
+          >
+            Moves
+          </button>
+          <button
+            type="button"
+            role="tab"
+            aria-selected={view === 'stats'}
+            className={view === 'stats' ? 'tab-button active' : 'tab-button'}
+            onClick={() => setView('stats')}
+          >
+            Stats
+          </button>
+        </div>
+
         <div className="team-grid">
-          {player.parsedTeam.map((mon, i) => {
-            const evsLine = formatEvs(mon.evs);
-            return (
-              <div className="mon-card" key={`${mon.species}-${i}`}>
-                <img src={getSpriteUrl(mon.species)} alt={mon.species} width={64} height={64} onError={(e) => { e.currentTarget.style.visibility = 'hidden'; }} />
-                <strong>{mon.species}</strong>
-                {mon.item && <p>{mon.item}</p>}
-                {mon.ability && <p>{mon.ability}</p>}
-                {mon.nature && <p>{mon.nature}</p>}
-                {evsLine && <p>EVs: {evsLine}</p>}
-                {mon.teraType && <p>Tera: {mon.teraType}</p>}
-                <ul>
-                  {mon.moves.map((move) => (
-                    <li key={move}>{move}</li>
-                  ))}
-                </ul>
-              </div>
-            );
-          })}
+          {player.parsedTeam.map((mon, i) =>
+            view === 'moves' ? (
+              <MonMovesCard mon={mon} key={`${mon.species}-${i}`} />
+            ) : (
+              <MonStatsCard mon={mon} key={`${mon.species}-${i}`} />
+            ),
+          )}
         </div>
       </div>
     </div>

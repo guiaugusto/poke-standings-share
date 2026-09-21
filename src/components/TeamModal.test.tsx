@@ -29,20 +29,31 @@ describe('TeamModal', () => {
     expect(container).toBeEmptyDOMElement();
   });
 
-  it('renders the players nick and each Pokemon details when a player is given', () => {
+  it('defaults to the Moves tab, showing item/ability/nature/moves for each Pokemon', () => {
     render(<TeamModal player={player} onClose={() => {}} />);
     expect(screen.getByText('Joseph Ugarte')).toBeInTheDocument();
     expect(screen.getByText('Incineroar')).toBeInTheDocument();
     expect(screen.getByText('Sitrus Berry')).toBeInTheDocument();
     expect(screen.getByText('Intimidate')).toBeInTheDocument();
     expect(screen.getByText('Careful')).toBeInTheDocument();
-    expect(screen.getByText(/Tera: Grass/)).toBeInTheDocument();
     expect(screen.getByText('Flare Blitz')).toBeInTheDocument();
   });
 
-  it('renders the EV spread in conventional VGC format when evs are present', () => {
+  it('switches to the Stats tab on click, showing EV bars instead of moves', () => {
     render(<TeamModal player={player} onClose={() => {}} />);
-    expect(screen.getByText('EVs: 240 HP / 88 Def / 16 SpA / 184 Spe')).toBeInTheDocument();
+    fireEvent.click(screen.getByRole('tab', { name: 'Stats' }));
+
+    expect(screen.getByText('Incineroar')).toBeInTheDocument();
+    expect(screen.getByText('240')).toBeInTheDocument(); // HP EV value
+    expect(screen.queryByText('Flare Blitz')).not.toBeInTheDocument();
+  });
+
+  it('switches back to the Moves tab on click', () => {
+    render(<TeamModal player={player} onClose={() => {}} />);
+    fireEvent.click(screen.getByRole('tab', { name: 'Stats' }));
+    fireEvent.click(screen.getByRole('tab', { name: 'Moves' }));
+
+    expect(screen.getByText('Flare Blitz')).toBeInTheDocument();
   });
 
   it('calls onClose when the close button is clicked', () => {
