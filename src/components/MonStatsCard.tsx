@@ -32,8 +32,8 @@ export function MonStatsCard({ mon }: Props) {
         <img
           src={getSpriteUrl(mon.species, mon.gender)}
           alt={mon.species}
-          width={56}
-          height={56}
+          width={80}
+          height={80}
           onError={(e) => {
             e.currentTarget.style.visibility = 'hidden';
           }}

@@ -12,5 +12,5 @@ export function TypeIcon({ type }: Props) {
   const url = getTypeIconUrl(type);
   if (!url) return null;
 
-  return <img className="type-icon" src={url} alt={capitalize(type)} width={20} height={20} />;
+  return <img className="type-icon" src={url} alt={capitalize(type)} width={26} height={26} />;
 }

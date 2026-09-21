@@ -23,8 +23,8 @@ export function MonMovesCard({ mon }: Props) {
           <img
             src={getSpriteUrl(mon.species, mon.gender)}
             alt={mon.species}
-            width={56}
-            height={56}
+            width={80}
+            height={80}
             onError={(e) => {
               e.currentTarget.style.visibility = 'hidden';
             }}
@@ -35,8 +35,8 @@ export function MonMovesCard({ mon }: Props) {
               <img
                 src={getItemIconUrl(mon.item)}
                 alt={mon.item}
-                width={16}
-                height={16}
+                width={22}
+                height={22}
                 onError={(e) => {
                   e.currentTarget.style.visibility = 'hidden';
                 }}
