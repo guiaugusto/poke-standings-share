@@ -105,6 +105,36 @@ Careful Nature
     expect(mon.species).toBe('Incineroar');
   });
 
+  it('parses a nicknamed Pokemon that also has a trailing gender marker (both parens present)', () => {
+    const raw = `
+Merlin (Delphox) (M) @ Delphoxite
+Ability: Blaze
+Modest Nature
+- Heat Wave
+- Protect
+- Nasty Plot
+- Psychic
+`;
+    const [mon] = parseShowdownTeam(raw);
+    expect(mon.nickname).toBe('Merlin');
+    expect(mon.species).toBe('Delphox');
+  });
+
+  it('parses a nicknamed alternate-form Pokemon with a gender marker (hyphenated species inside the parens)', () => {
+    const raw = `
+Ninetails (Ninetales-Alola) (F) @ Focus Sash
+Ability: Snow Warning
+Modest Nature
+- Blizzard
+- Moonblast
+- Aurora Veil
+- Protect
+`;
+    const [mon] = parseShowdownTeam(raw);
+    expect(mon.nickname).toBe('Ninetails');
+    expect(mon.species).toBe('Ninetales-Alola');
+  });
+
   it('skips a malformed block with no species instead of throwing', () => {
     const raw = `
 Raichu @ Raichunite Y

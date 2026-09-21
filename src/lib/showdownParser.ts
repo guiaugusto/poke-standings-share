@@ -49,16 +49,21 @@ function isFieldLine(line: string): boolean {
 
 function parseHeaderLine(header: string): { species: string; nickname?: string; item?: string } | undefined {
   const [namePartRaw, itemRaw] = header.split(/\s+@\s+/);
-  const namePart = namePartRaw?.trim();
+  let namePart = namePartRaw?.trim();
   if (!namePart) return undefined;
+
+  // A gender marker is its own trailing "(M)"/"(F)", separate from — and always
+  // after — a nickname/species parenthetical: "Merlin (Delphox) (M)". Strip it
+  // first so the nickname/species match below never has to treat it as part of
+  // that pair.
+  const genderMatch = namePart.match(/^(.*)\s\((M|F)\)$/);
+  if (genderMatch) {
+    namePart = genderMatch[1].trim();
+  }
 
   const parenMatch = namePart.match(/^(.*?)\s*\(([^)]+)\)\s*$/);
   if (parenMatch) {
     const [, before, inside] = parenMatch;
-    if (inside === 'M' || inside === 'F') {
-      // Gender marker, not a nickname: "Incineroar (M)" -> species is "Incineroar".
-      return { species: before.trim(), item: itemRaw?.trim() };
-    }
     return { species: inside.trim(), nickname: before.trim(), item: itemRaw?.trim() };
   }
 
