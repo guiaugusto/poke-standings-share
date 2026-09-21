@@ -35,8 +35,8 @@ export function MonMovesCard({ mon }: Props) {
               <img
                 src={getItemIconUrl(mon.item)}
                 alt={mon.item}
-                width={30}
-                height={30}
+                width={26}
+                height={26}
                 onError={(e) => {
                   e.currentTarget.style.visibility = 'hidden';
                 }}
