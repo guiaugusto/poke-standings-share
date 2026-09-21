@@ -66,6 +66,19 @@ body {
   font-weight: bold;
 }
 
+.standings-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.75rem;
+}
+
+.standings-search {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+}
+
 .standings-table-wrapper {
   overflow-x: auto;
 }
@@ -73,6 +86,27 @@ body {
 .standings-table {
   width: 100%;
   border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.standings-table .col-rank {
+  width: 8%;
+}
+
+.standings-table .col-player {
+  width: 34%;
+}
+
+.standings-table .col-record {
+  width: 16%;
+}
+
+.standings-table .col-points {
+  width: 14%;
+}
+
+.standings-table .col-team {
+  width: 28%;
 }
 
 .standings-table th,
@@ -80,6 +114,10 @@ body {
   padding: 0.5rem 0.75rem;
   text-align: left;
   border-bottom: 1px solid #ddd;
+}
+
+.standings-table tbody tr:nth-child(even) {
+  background: rgba(127, 127, 127, 0.08);
 }
 
 .modal-overlay {
@@ -92,6 +130,7 @@ body {
 }
 
 .modal-content {
+  position: relative;
   background: canvas;
   color: canvastext;
   padding: 1.5rem;
@@ -101,10 +140,36 @@ body {
   overflow: auto;
 }
 
+.modal-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  border: none;
+  background: rgba(127, 127, 127, 0.2);
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
 .team-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
+}
+
+@media (max-width: 900px) {
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .mon-card {
@@ -126,6 +191,11 @@ body {
 .mon-card-name {
   font-weight: bold;
   font-size: 0.9rem;
+}
+
+.mon-card-gender {
+  font-weight: normal;
+  opacity: 0.85;
 }
 
 .mon-card-body {
@@ -162,15 +232,17 @@ body {
   font-weight: bold;
 }
 
-.type-badge {
+.mon-card-item {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+}
+
+.type-icon {
   display: inline-block;
-  color: #fff;
-  font-size: 0.7rem;
-  font-weight: bold;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
-  padding: 0.1rem 0.5rem;
-  border-radius: 999px;
-  text-transform: uppercase;
+  vertical-align: middle;
+  flex: 0 0 auto;
 }
 
 .move-list {
