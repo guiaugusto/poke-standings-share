@@ -111,28 +111,39 @@ body {
 
 .standings-table {
   width: 100%;
-  border-collapse: collapse;
+  /* border-collapse: collapse (the usual choice) silently breaks
+     position: sticky on table cells in Safari/iOS — the sticky Team
+     column below wouldn't actually stick on a phone. separate +
+     border-spacing: 0 looks the same but keeps sticky working there. */
+  border-collapse: separate;
+  border-spacing: 0;
   table-layout: fixed;
 }
 
+/* Fixed pixel widths (not percentages) for every column except Player:
+   with table-layout: fixed, a percentage-based column shrinks below its
+   own content's minimum size on narrow/mobile viewports — that's what was
+   squishing the Rank/W-L-T/Points headers into overlapping, wrapped text,
+   and cutting off the Team column's row of un-shrinking 32px sprites
+   before the sticky rule below even got a chance to keep it in view.
+   Player is intentionally left with no explicit width: in a fixed-layout
+   table it then absorbs whatever space remains, which is what keeps the
+   row filling the full width on desktop — same visual result as the old
+   percentages, but with a hard floor for the other four on mobile. */
 .standings-table .col-rank {
-  width: 8%;
-}
-
-.standings-table .col-player {
-  width: 34%;
+  width: 70px;
 }
 
 .standings-table .col-record {
-  width: 16%;
+  width: 70px;
 }
 
 .standings-table .col-points {
-  width: 14%;
+  width: 70px;
 }
 
 .standings-table .col-team {
-  width: 28%;
+  width: 230px;
 }
 
 .standings-table th,
@@ -140,6 +151,7 @@ body {
   padding: 0.5rem 0.75rem;
   text-align: left;
   border-bottom: 1px solid #ddd;
+  white-space: nowrap;
 }
 
 .standings-table tbody tr:nth-child(even) {
