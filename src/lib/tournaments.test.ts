@@ -5,6 +5,7 @@ import { loadTournaments, loadTournamentBySlug } from './tournaments';
 const FIXTURES_DIR = path.join(__dirname, '../../tests/fixtures/tournaments');
 // A second fixtures dir without the invalid file, used for tests that load everything.
 const VALID_FIXTURES_DIR = path.join(__dirname, '../../tests/fixtures/valid-tournaments');
+const NO_TEAM_FIXTURES_DIR = path.join(__dirname, '../../tests/fixtures/no-team-tournaments');
 
 describe('loadTournaments', () => {
   it('loads tournaments from yml files, excluding files starting with underscore', () => {
@@ -35,6 +36,14 @@ describe('loadTournaments', () => {
 
   it('throws a clear error when a tournament file fails schema validation', () => {
     expect(() => loadTournaments(FIXTURES_DIR)).toThrow(/invalid-tournament\.yml/);
+  });
+
+  it('allows a player to have no team — empty string or the field omitted entirely — without failing the whole file', () => {
+    const tournaments = loadTournaments(NO_TEAM_FIXTURES_DIR);
+    const players = tournaments[0].players;
+    expect(players.find((p) => p.nick === 'Empty Team')?.team).toBe('');
+    expect(players.find((p) => p.nick === 'Missing Team')?.team).toBeUndefined();
+    expect(players.find((p) => p.nick === 'Has Team')?.team).toContain('Incineroar');
   });
 });
 

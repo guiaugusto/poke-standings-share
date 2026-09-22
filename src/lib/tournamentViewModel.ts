@@ -38,7 +38,7 @@ function trimUsageStats(stats: UsageStats): UsageStats {
 export function buildTournamentViewModel(tournament: Tournament): TournamentViewModel {
   const players: PlayerWithTeam[] = tournament.players.map(({ team, ...rest }) => ({
     ...rest,
-    parsedTeam: parseShowdownTeam(team),
+    parsedTeam: parseShowdownTeam(team ?? ''),
   }));
 
   const usageStats = trimUsageStats(computeUsageStats(players.map((p) => p.parsedTeam)));

@@ -1,0 +1,29 @@
+name: "Copa Sem Time"
+date: 2026-04-01
+players:
+  - rank: 1
+    nick: "Has Team"
+    wins: 3
+    losses: 0
+    ties: 0
+    points: 9
+    team: |
+      Incineroar @ Sitrus Berry
+      Ability: Intimidate
+      Level: 50
+      Careful Nature
+      - Flare Blitz
+      - Fake Out
+  - rank: 2
+    nick: "Empty Team"
+    wins: 0
+    losses: 3
+    ties: 0
+    points: 0
+    team: ""
+  - rank: 3
+    nick: "Missing Team"
+    wins: 0
+    losses: 3
+    ties: 0
+    points: 0

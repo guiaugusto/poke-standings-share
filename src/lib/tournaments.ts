@@ -11,7 +11,11 @@ const playerSchema = z.object({
   losses: z.number().int().nonnegative(),
   ties: z.number().int().nonnegative(),
   points: z.number(),
-  team: z.string().min(1),
+  // Optional (empty string or the field omitted entirely): a player who
+  // didn't submit a team paste — e.g. a no-show or an OTS-less report —
+  // still needs a valid row. The UI shows a "no team available" placeholder
+  // for these rather than failing the whole file's build.
+  team: z.string().optional(),
 });
 
 const tournamentSchema = z.object({

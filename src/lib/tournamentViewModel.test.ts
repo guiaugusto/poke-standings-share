@@ -76,4 +76,23 @@ describe('buildTournamentViewModel', () => {
     expect(vm.name).toBe('Copa Primavera VGC');
     expect(vm.slug).toBe('copa-primavera');
   });
+
+  it('gives a player with no team (undefined) an empty parsedTeam instead of throwing', () => {
+    const noTeamTournament: Tournament = {
+      ...tournament,
+      players: [
+        {
+          rank: 1,
+          nick: 'No Team Player',
+          wins: 0,
+          losses: 0,
+          ties: 0,
+          points: 0,
+          team: undefined,
+        },
+      ],
+    };
+    const vm = buildTournamentViewModel(noTeamTournament);
+    expect(vm.players[0].parsedTeam).toEqual([]);
+  });
 });
