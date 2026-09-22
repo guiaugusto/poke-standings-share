@@ -111,10 +111,20 @@ body {
 
 .standings-table {
   width: 100%;
-  /* border-collapse: collapse (the usual choice) silently breaks
+  /* Without this, table-layout: fixed honors width: 100% on a narrow
+     viewport by squeezing Player (the one column with no explicit width)
+     down toward 0 instead of growing the table past the container — its
+     nowrap text then overflows visibly across the other columns instead
+     of the wrapper's overflow-x scrolling kicking in. This min-width is
+     the four fixed columns (70+70+70+230) plus a real minimum for Player,
+     so every column gets its actual computed width and the table
+     overflows (scrolls) as a whole on narrow screens instead of any one
+     column collapsing.
+     border-collapse: collapse (the usual choice) silently breaks
      position: sticky on table cells in Safari/iOS — the sticky Team
      column below wouldn't actually stick on a phone. separate +
      border-spacing: 0 looks the same but keeps sticky working there. */
+  min-width: 620px;
   border-collapse: separate;
   border-spacing: 0;
   table-layout: fixed;
