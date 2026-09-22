@@ -7,7 +7,6 @@ interface Props {
   onSelectPlayer: (player: PlayerWithTeam) => void;
 }
 
-type SortKey = 'rank' | 'points' | 'wins';
 type SortDir = 'asc' | 'desc';
 
 function matchesQuery(player: PlayerWithTeam, query: string): boolean {
@@ -17,29 +16,20 @@ function matchesQuery(player: PlayerWithTeam, query: string): boolean {
 
 export function StandingsTable({ players, onSelectPlayer }: Props) {
   const [filter, setFilter] = useState('');
-  const [sortKey, setSortKey] = useState<SortKey>('rank');
   const [sortDir, setSortDir] = useState<SortDir>('asc');
 
-  const handleSort = (key: SortKey) => {
-    if (key === sortKey) {
-      setSortDir((dir) => (dir === 'asc' ? 'desc' : 'asc'));
-    } else {
-      setSortKey(key);
-      setSortDir('asc');
-    }
+  const handleSort = () => {
+    setSortDir((dir) => (dir === 'asc' ? 'desc' : 'asc'));
   };
 
   const visiblePlayers = useMemo(() => {
     const query = filter.trim().toLowerCase();
     const filtered = query ? players.filter((p) => matchesQuery(p, query)) : players;
     const dirMultiplier = sortDir === 'asc' ? 1 : -1;
-    return [...filtered].sort((a, b) => (a[sortKey] - b[sortKey]) * dirMultiplier);
-  }, [players, filter, sortKey, sortDir]);
+    return [...filtered].sort((a, b) => (a.rank - b.rank) * dirMultiplier);
+  }, [players, filter, sortDir]);
 
-  const sortIndicator = (key: SortKey) => {
-    if (key !== sortKey) return '';
-    return sortDir === 'asc' ? ' ▲' : ' ▼';
-  };
+  const sortIndicator = sortDir === 'asc' ? ' ▲' : ' ▼';
 
   return (
     <div>
@@ -61,21 +51,13 @@ export function StandingsTable({ players, onSelectPlayer }: Props) {
           <thead>
             <tr>
               <th>
-                <button type="button" onClick={() => handleSort('rank')}>
-                  Rank{sortIndicator('rank')}
+                <button type="button" onClick={handleSort}>
+                  Rank{sortIndicator}
                 </button>
               </th>
               <th>Player</th>
-              <th>
-                <button type="button" onClick={() => handleSort('wins')}>
-                  W-L-T{sortIndicator('wins')}
-                </button>
-              </th>
-              <th>
-                <button type="button" onClick={() => handleSort('points')}>
-                  Points{sortIndicator('points')}
-                </button>
-              </th>
+              <th>W-L-T</th>
+              <th>Points</th>
               <th className="col-team-cell">Team</th>
             </tr>
           </thead>

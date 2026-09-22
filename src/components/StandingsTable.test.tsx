@@ -37,27 +37,22 @@ describe('StandingsTable', () => {
     expect(onSelectPlayer).toHaveBeenCalledWith(players[1]);
   });
 
-  it('sorts by points ascending when the Points header is clicked, and toggles to descending on a second click', () => {
+  it('reverses order to rank descending when the Rank header is clicked', () => {
     render(<StandingsTable players={players} onSelectPlayer={() => {}} />);
 
-    fireEvent.click(screen.getByRole('button', { name: /points/i }));
-    let rows = screen.getAllByRole('row').slice(1);
-    expect(rows[0]).toHaveTextContent('Ana Souza'); // 15 points
-    expect(rows[1]).toHaveTextContent('Joseph Ugarte'); // 18 points
-
-    fireEvent.click(screen.getByRole('button', { name: /points/i }));
-    rows = screen.getAllByRole('row').slice(1);
-    expect(rows[0]).toHaveTextContent('Joseph Ugarte'); // 18 points, now descending
-    expect(rows[1]).toHaveTextContent('Ana Souza'); // 15 points
+    fireEvent.click(screen.getByRole('button', { name: /rank/i }));
+    const rows = screen.getAllByRole('row').slice(1);
+    expect(rows[0]).toHaveTextContent('Ana Souza'); // rank 2
+    expect(rows[1]).toHaveTextContent('Joseph Ugarte'); // rank 1
   });
 
-  it('sorts by wins when the W-L-T header is clicked', () => {
+  it('does not offer sorting by W-L-T or Points', () => {
     render(<StandingsTable players={players} onSelectPlayer={() => {}} />);
 
-    fireEvent.click(screen.getByRole('button', { name: /w-l-t/i }));
-    const rows = screen.getAllByRole('row').slice(1);
-    expect(rows[0]).toHaveTextContent('Ana Souza'); // 5 wins
-    expect(rows[1]).toHaveTextContent('Joseph Ugarte'); // 6 wins
+    expect(screen.queryByRole('button', { name: /w-l-t/i })).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: /^points/i })).not.toBeInTheDocument();
+    expect(screen.getByText('W-L-T')).toBeInTheDocument();
+    expect(screen.getByText('Points')).toBeInTheDocument();
   });
 
   it('shows 6 placeholder slots instead of a clickable team button when a player has no parsed team', () => {
