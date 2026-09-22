@@ -56,7 +56,7 @@ describe('buildTournamentViewModel', () => {
     expect(vm.usageStats.topSpecies).toHaveLength(12);
   });
 
-  it('still trims topItems to the top 10, since only a top-10 list is ever displayed', () => {
+  it('does not trim topItems either, since the items search needs to find items beyond the top 10', () => {
     const players = Array.from({ length: 12 }, (_, i) => ({
       rank: i + 1,
       nick: `Player ${i}`,
@@ -68,7 +68,7 @@ describe('buildTournamentViewModel', () => {
     }));
     const manyTournament: Tournament = { ...tournament, players };
     const vm = buildTournamentViewModel(manyTournament);
-    expect(vm.usageStats.topItems).toHaveLength(10);
+    expect(vm.usageStats.topItems).toHaveLength(12);
   });
 
   it('preserves tournament-level fields', () => {

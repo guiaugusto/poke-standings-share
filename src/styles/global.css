@@ -331,29 +331,91 @@ button.team-thumbnails {
   gap: 0.25rem;
 }
 
-.species-table {
-  width: 100%;
-  border-collapse: collapse;
+.species-carousel {
   margin-bottom: 2rem;
 }
 
-.species-table th,
-.species-table td {
-  padding: 0.4rem 0.75rem;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
+.species-carousel-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
 }
 
-.items-list {
-  padding-left: 1.25rem;
+.species-carousel-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 0.4rem 0.6rem;
 }
 
-.items-list li {
-  padding: 0.3rem 0;
+.species-carousel-name {
+  flex: 1;
+}
+
+.species-carousel-pct {
+  color: #666;
+  font-size: 0.85rem;
+}
+
+.species-carousel-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+
+.species-carousel-page {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.items-search {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  margin-bottom: 0.75rem;
+}
+
+.items-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.75rem;
+}
+
+.items-grid-item {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 0.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.items-grid-name {
+  font-size: 0.8rem;
+}
+
+.items-grid-pct {
+  font-size: 0.75rem;
+  color: #666;
 }
 
 @media (max-width: 640px) {
-  .species-grid {
+  .species-grid,
+  .items-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .species-carousel-list {
+    grid-template-columns: 1fr;
   }
 }
