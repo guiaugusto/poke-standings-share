@@ -4,17 +4,17 @@
 # e preencha os campos abaixo com os dados do seu torneio. Arquivos que
 # começam com "_" (como este) são ignorados pelo site.
 
-name: "League Challenge - Gruta Bsb"
+name: "League Challenge - Gruta BSB - Setembro/2026"
 date: 2026-09-19          # formato AAAA-MM-DD
 format: "VGC Regulation M-C1" # opcional — pode remover esta linha
 
 players:
   # Copie o bloco abaixo para cada jogador, não precisa ser na ordem de colocação.
-  - rank: 3
+  - rank: 5
     nick: "Luiz Dutra"
     pokepaste: "https://pokepast.es/a826c8a53fccbf0e" # opcional, só para crédito
     wins: 4
-    losses: 1
+    losses: 2
     ties: 0
     points: 12
     team: |
@@ -114,13 +114,13 @@ players:
       - Protect  
       - Fake Out  
       - Close Combat  
-  - rank: 2
+  - rank: 3
     nick: "God Kohl"
     pokepaste: "https://pokepast.es/1e91cd72c49ee548" # opcional, só para crédito
-    wins: 4
-    losses: 1
+    wins: 5
+    losses: 2
     ties: 0
-    points: 12
+    points: 15
     team: |
       Teu CUruru (Venusaur) (M) @ Focus Sash  
       Ability: Chlorophyll  
@@ -282,13 +282,13 @@ players:
       - Iron Head
       - Sucker Punch
       - Protect
-  - rank: 5
+  - rank: 4
     nick: "Rafael Villela"
     pokepaste: "https://pokepast.es/2ef6b4040166da30" # opcional, só para crédito
-    wins: 4
-    losses: 1
+    wins: 5
+    losses: 2
     ties: 0
-    points: 12
+    points: 15
     team: |
       Gengar @ Gengarite  
       Ability: Cursed Body  
@@ -343,14 +343,134 @@ players:
       - Draining Kiss  
       - Calm Mind  
       - Protect  
-  # - rank: 1
-  #   nick: "Nome do Jogador"
-  #   pokepaste: "https://pokepast.es/xxxxxxxxxxxx" # opcional, só para crédito
-  #   wins: 0
-  #   losses: 0
-  #   ties: 0
-  #   points: 0
-  #   team: |
+  - rank: 6
+    nick: "Ami Aram"
+    pokepaste: "https://pokepast.es/xxxxxxxxxxxx" # opcional, só para crédito
+    wins: 4
+    losses: 2
+    ties: 0
+    points: 12
+    team: |
+  - rank: 22
+    nick: "João Vitor Bontempo"
+    pokepaste: "https://pokepast.es/xxxxxxxxxxxx" # opcional, só para crédito
+    wins: 0
+    losses: 5
+    ties: 0
+    points: 0
+    team: |
+  - rank: 21
+    nick: "Arthur Lima"
+    pokepaste: "https://pokepast.es/xxxxxxxxxxxx" # opcional, só para crédito
+    wins: 1
+    losses: 4
+    ties: 0
+    points: 3
+    team: |
+  - rank: 20
+    nick: "Gustavo Sacramento"
+    pokepaste: "https://pokepast.es/xxxxxxxxxxxx" # opcional, só para crédito
+    wins: 1
+    losses: 4
+    ties: 0
+    points: 3
+    team: |
+  - rank: 19
+    nick: "Pedro Barreto"
+    pokepaste: "https://pokepast.es/xxxxxxxxxxxx" # opcional, só para crédito
+    wins: 1
+    losses: 4
+    ties: 0
+    points: 3
+    team: |
+  - rank: 16
+    nick: "Mateus Lázaro"
+    pokepaste: "https://pokepast.es/xxxxxxxxxxxx" # opcional, só para crédito
+    wins: 2
+    losses: 3
+    ties: 0
+    points: 6
+    team: |
+  - rank: 18
+    nick: "Isaac Brandt"
+    pokepaste: "https://pokepast.es/xxxxxxxxxxxx" # opcional, só para crédito
+    wins: 1
+    losses: 4
+    ties: 0
+    points: 3
+    team: |
+  - rank: 17
+    nick: "Pedro Soares"
+    pokepaste: "https://pokepast.es/xxxxxxxxxxxx" # opcional, só para crédito
+    wins: 2
+    losses: 3
+    ties: 0
+    points: 6
+    team: |
+  - rank: 15
+    nick: "Murilo Camargo"
+    pokepaste: "https://pokepast.es/xxxxxxxxxxxx" # opcional, só para crédito
+    wins: 2
+    losses: 3
+    ties: 0
+    points: 6
+    team: |
+  - rank: 14
+    nick: "Rafael Sacramento"
+    pokepaste: "https://pokepast.es/xxxxxxxxxxxx" # opcional, só para crédito
+    wins: 2
+    losses: 3
+    ties: 0
+    points: 6
+    team: |
+  - rank: 11
+    nick: "Daniel Bezerra"
+    pokepaste: "https://pokepast.es/xxxxxxxxxxxx" # opcional, só para crédito
+    wins: 3
+    losses: 2
+    ties: 0
+    points: 9
+    team: |
+  - rank: 10
+    nick: "Lucas Freitas"
+    pokepaste: "https://pokepast.es/xxxxxxxxxxxx" # opcional, só para crédito
+    wins: 3
+    losses: 2
+    ties: 0
+    points: 9
+    team: |
+  - rank: 9
+    nick: "Daniel Barreto"
+    pokepaste: "https://pokepast.es/xxxxxxxxxxxx" # opcional, só para crédito
+    wins: 3
+    losses: 2
+    ties: 0
+    points: 9
+    team: |
+  - rank: 1
+    nick: "Renan Bernardo"
+    pokepaste: "https://pokepast.es/xxxxxxxxxxxx" # opcional, só para crédito
+    wins: 7
+    losses: 1
+    ties: 0
+    points: 21
+    team: |
+  - rank: 7
+    nick: "Vitor Gonçalves"
+    pokepaste: "https://pokepast.es/xxxxxxxxxxxx" # opcional, só para crédito
+    wins: 4
+    losses: 2
+    ties: 0
+    points: 12
+    team: |
+  - rank: 2
+    nick: "Pedro Cardoso"
+    pokepaste: "https://pokepast.es/xxxxxxxxxxxx" # opcional, só para crédito
+    wins: 5
+    losses: 3
+    ties: 0
+    points: 15
+    team: |
   # - rank: 1
   #   nick: "Nome do Jogador"
   #   pokepaste: "https://pokepast.es/xxxxxxxxxxxx" # opcional, só para crédito
