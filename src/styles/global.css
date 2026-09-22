@@ -45,6 +45,32 @@ body {
   color: #666;
 }
 
+.tournament-search-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.75rem;
+}
+
+.tournament-search {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.tournament-list-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+
+.tournament-list-page {
+  font-size: 0.85rem;
+  color: #666;
+}
+
 .tabs {
   display: flex;
   gap: 0.5rem;

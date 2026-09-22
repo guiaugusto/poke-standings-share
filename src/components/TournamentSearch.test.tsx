@@ -26,4 +26,44 @@ describe('TournamentSearch', () => {
     fireEvent.change(screen.getByLabelText(/search tournament/i), { target: { value: 'does not exist' } });
     expect(screen.getByText(/no tournament found/i)).toBeInTheDocument();
   });
+
+  it('shows only the first 30 tournaments per page, with pagination controls', () => {
+    const manyTournaments = Array.from({ length: 45 }, (_, i) => ({
+      slug: `tournament-${i}`,
+      name: `Tournament ${i}`,
+      date: '2026-01-01',
+    }));
+    render(<TournamentSearch tournaments={manyTournaments} />);
+
+    expect(screen.getByText('Tournament 0')).toBeInTheDocument();
+    expect(screen.getByText('Tournament 29')).toBeInTheDocument();
+    expect(screen.queryByText('Tournament 30')).not.toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole('button', { name: /next/i }));
+    expect(screen.getByText('Tournament 30')).toBeInTheDocument();
+    expect(screen.getByText('Tournament 44')).toBeInTheDocument();
+    expect(screen.queryByText('Tournament 0')).not.toBeInTheDocument();
+  });
+
+  it('does not show pagination controls when everything fits on one page', () => {
+    render(<TournamentSearch tournaments={tournaments} />);
+    expect(screen.queryByRole('button', { name: /next/i })).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: /previous/i })).not.toBeInTheDocument();
+  });
+
+  it('resets to the first page when the search query changes', () => {
+    const manyTournaments = Array.from({ length: 45 }, (_, i) => ({
+      slug: `tournament-${i}`,
+      name: `Tournament ${i}`,
+      date: '2026-01-01',
+    }));
+    render(<TournamentSearch tournaments={manyTournaments} />);
+
+    fireEvent.click(screen.getByRole('button', { name: /next/i }));
+    expect(screen.getByText('Tournament 30')).toBeInTheDocument();
+
+    fireEvent.change(screen.getByLabelText(/search tournament/i), { target: { value: 'Tournament 1' } });
+    // Back on page 1 of the filtered results, showing matches from the start again.
+    expect(screen.getByText('Tournament 1')).toBeInTheDocument();
+  });
 });
