@@ -1,20 +1,32 @@
-const MAX_EV = 252;
+const MAX_BASE_STAT = 255; // Blissey's HP, the highest base stat in the games.
 
 interface Props {
   label: string;
-  value: number;
+  base?: number;
+  ev: number;
+  final?: number;
+  sign?: '+' | '-';
 }
 
-export function StatBar({ label, value }: Props) {
-  const percent = Math.min(100, (value / MAX_EV) * 100);
+function formatInvestment(ev: number, sign: '+' | '-' | undefined): string {
+  if (ev === 0) return sign ?? '';
+  return `${ev}${sign ?? ''}`;
+}
+
+export function StatBar({ label, base, ev, final, sign }: Props) {
+  const barPercent = base === undefined ? 0 : Math.min(100, (base / MAX_BASE_STAT) * 100);
 
   return (
     <div className="stat-bar">
       <span className="stat-bar-label">{label}</span>
+      <span className="stat-bar-base-value">{base ?? '—'}</span>
       <div className="stat-bar-track">
-        <div className="stat-bar-fill" data-testid="stat-bar-fill" style={{ width: `${percent}%` }} />
+        <div className="stat-bar-fill" data-testid="stat-bar-fill" style={{ width: `${barPercent}%` }} />
       </div>
-      <span className="stat-bar-value">{value}</span>
+      <span className={sign ? `stat-bar-investment stat-bar-investment--${sign === '+' ? 'boost' : 'reduce'}` : 'stat-bar-investment'}>
+        {formatInvestment(ev, sign)}
+      </span>
+      <span className="stat-bar-value">{final ?? '—'}</span>
     </div>
   );
 }

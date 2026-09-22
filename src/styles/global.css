@@ -217,8 +217,12 @@ button.team-thumbnails {
   color: canvastext;
   padding: 2rem;
   border-radius: 8px;
-  max-width: min(95vw, 1200px);
-  max-height: 92vh;
+  /* Fixed (not max-*) so the modal box stays the same size when switching
+     between the Moves and Stats tabs, instead of shrinking/growing to fit
+     whichever tab's content is shorter or taller. Content that doesn't fill
+     it just leaves whitespace; content that overflows scrolls internally. */
+  width: min(95vw, 1200px);
+  height: 92vh;
   overflow: auto;
 }
 
@@ -352,7 +356,7 @@ button.team-thumbnails {
 
 .stat-bar {
   display: grid;
-  grid-template-columns: 3rem 1fr 2.5rem;
+  grid-template-columns: 3rem 2rem 1fr 3rem 2.5rem;
   align-items: center;
   gap: 0.5rem;
   font-size: 0.9rem;
@@ -361,6 +365,10 @@ button.team-thumbnails {
 .stat-bar-label {
   text-align: left;
   color: #666;
+}
+
+.stat-bar-base-value {
+  text-align: right;
 }
 
 .stat-bar-track {
@@ -375,8 +383,25 @@ button.team-thumbnails {
   height: 100%;
 }
 
+.stat-bar-investment {
+  text-align: center;
+  border: 1px solid #999;
+  border-radius: 4px;
+  padding: 0.1rem 0.3rem;
+  font-size: 0.85rem;
+}
+
+.stat-bar-investment--boost {
+  color: #c0392b;
+}
+
+.stat-bar-investment--reduce {
+  color: #2f6fb5;
+}
+
 .stat-bar-value {
   text-align: right;
+  font-weight: bold;
 }
 
 .species-grid {
