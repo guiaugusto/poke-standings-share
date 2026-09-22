@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import type { PlayerWithTeam } from '../lib/tournamentViewModel';
-import { getSpriteUrl } from '../lib/sprites';
+import { getSpriteUrl, getUnknownSpriteUrl } from '../lib/sprites';
 
 interface Props {
   players: PlayerWithTeam[];
@@ -90,7 +90,9 @@ export function StandingsTable({ players, onSelectPlayer }: Props) {
                   {player.parsedTeam.length === 0 ? (
                     <div className="team-thumbnails team-thumbnails--empty">
                       {Array.from({ length: 6 }, (_, i) => (
-                        <span key={i} className="mon-placeholder">?</span>
+                        <span key={i} className="mon-placeholder">
+                          <img src={getUnknownSpriteUrl()} alt="Unknown Pokémon" width={22} height={22} />
+                        </span>
                       ))}
                     </div>
                   ) : (

@@ -132,10 +132,7 @@ body {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: rgba(127, 127, 127, 0.2);
-  color: #888;
-  font-weight: bold;
-  font-size: 0.9rem;
+  background: rgba(127, 127, 127, 0.3);
 }
 
 .modal-overlay {

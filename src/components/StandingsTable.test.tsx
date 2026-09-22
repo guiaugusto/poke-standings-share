@@ -74,7 +74,7 @@ describe('StandingsTable', () => {
 
     expect(screen.queryByRole('button', { name: /no team player's team/i })).not.toBeInTheDocument();
     const row = screen.getByText('No Team Player').closest('tr')!;
-    expect(within(row).getAllByText('?')).toHaveLength(6);
+    expect(within(row).getAllByAltText('Unknown Pokémon')).toHaveLength(6);
   });
 
   it('does not call onSelectPlayer when clicking a placeholder slot for a player with no team', () => {
@@ -91,7 +91,7 @@ describe('StandingsTable', () => {
     render(<StandingsTable players={[...players, playerWithNoTeam]} onSelectPlayer={onSelectPlayer} />);
 
     const row = screen.getByText('No Team Player').closest('tr')!;
-    fireEvent.click(within(row).getAllByText('?')[0]);
+    fireEvent.click(within(row).getAllByAltText('Unknown Pokémon')[0]);
     expect(onSelectPlayer).not.toHaveBeenCalled();
   });
 });

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { getSpriteUrl } from './sprites';
+import { getSpriteUrl, getUnknownSpriteUrl } from './sprites';
 
 describe('getSpriteUrl', () => {
   it('resolves a species name to its PokeAPI sprite URL by id', () => {
@@ -35,7 +35,7 @@ describe('getSpriteUrl', () => {
     );
   });
 
-  it('falls back to a 404-ing placeholder id for a species not in the table, instead of throwing', () => {
+  it('falls back to the id-0 "unknown" placeholder sprite for a species not in the table, instead of throwing', () => {
     expect(getSpriteUrl('Not A Real Pokemon')).toBe(
       'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/0.png',
     );
@@ -59,6 +59,14 @@ describe('getSpriteUrl', () => {
   it('falls back to a gendered variant even when no gender was given, rather than 404ing needlessly', () => {
     expect(getSpriteUrl('Basculegion')).toBe(
       'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/902.png',
+    );
+  });
+});
+
+describe('getUnknownSpriteUrl', () => {
+  it('returns the same id-0 "unknown" sprite URL that getSpriteUrl falls back to', () => {
+    expect(getUnknownSpriteUrl()).toBe(
+      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/0.png',
     );
   });
 });

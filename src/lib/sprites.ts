@@ -19,10 +19,11 @@ const SPRITE_BASE = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sp
 // alias entry for the ones most common in VGC (Urshifu, and the Forces of
 // Nature quartet); anything else in that situation is a known, accepted
 // gap, same as unmapped mega/regional forms. A species/form not present in
-// the table at all falls back to id 0, producing a URL that 404s; callers
-// already handle a failed sprite load gracefully (see the onError handlers
-// in StandingsTable, TeamModal, and TopSpeciesGrid) rather than needing a
-// guess here.
+// the table at all falls back to id 0 — which PokeAPI's sprite set actually
+// resolves to a real "unknown Pokémon" question-mark icon (not a 404), so
+// an unmapped species degrades to that icon automatically. getUnknownSpriteUrl()
+// below exposes this same id-0 icon directly, for UI that wants it on
+// purpose rather than as a fallback (e.g. a "no team" placeholder slot).
 function slugify(species: string): string {
   return species
     .toLowerCase()
@@ -46,4 +47,8 @@ export function getSpriteUrl(species: string, gender?: 'M' | 'F'): string {
     SPRITE_IDS[`${slug}-female`] ??
     0;
   return `${SPRITE_BASE}/${id}.png`;
+}
+
+export function getUnknownSpriteUrl(): string {
+  return `${SPRITE_BASE}/0.png`;
 }
