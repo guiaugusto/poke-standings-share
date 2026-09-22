@@ -257,17 +257,26 @@ button.team-thumbnails {
 /* Fixed size (not content-driven) so a card is the same footprint on the
    Moves tab as on the Stats tab — those two show a different amount of
    content (4 moves vs. 6 stat rows) and would otherwise render at two
-   different heights depending on which tab is active. Width is capped
-   rather than fixed outright so it still shrinks to fit on narrow/mobile
-   screens instead of overflowing. */
+   different heights (and, since .modal-content itself shrink-wraps its
+   content, two different overall modal widths) depending on which tab is
+   active. This has to be a real fixed width, not `width: 100%; max-width:
+   ...`: max-width is only a ceiling, so when .modal-content's own width is
+   itself computed from its content (shrink-to-fit), a card with narrower
+   content (Moves) simply renders narrower than the cap instead of being
+   forced up to it — which is exactly why only the Stats tab looked right. */
 .mon-card {
   box-sizing: border-box;
   border: 1px solid #ccc;
   border-radius: 10px;
   overflow: hidden;
-  width: 100%;
-  max-width: 330.72px;
+  width: 330.72px;
   height: 263.58px;
+}
+
+@media (max-width: 520px) {
+  .mon-card {
+    width: 100%;
+  }
 }
 
 .mon-card-header {
