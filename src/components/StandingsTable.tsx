@@ -76,7 +76,7 @@ export function StandingsTable({ players, onSelectPlayer }: Props) {
                   Points{sortIndicator('points')}
                 </button>
               </th>
-              <th>Team</th>
+              <th className="col-team-cell">Team</th>
             </tr>
           </thead>
           <tbody>
@@ -86,7 +86,7 @@ export function StandingsTable({ players, onSelectPlayer }: Props) {
                 <td>{player.nick}</td>
                 <td>{player.wins}-{player.losses}-{player.ties}</td>
                 <td>{player.points}</td>
-                <td>
+                <td className="col-team-cell">
                   {player.parsedTeam.length === 0 ? (
                     <div className="team-thumbnails">
                       {Array.from({ length: 6 }, (_, i) => (

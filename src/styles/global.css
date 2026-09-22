@@ -146,6 +146,18 @@ body {
   background: rgba(127, 127, 127, 0.08);
 }
 
+/* Keeps the Team column visible during the horizontal scroll that kicks in
+   on narrow/mobile screens (the row of team-sprite <img>s doesn't shrink
+   below their fixed pixel width, so the table overflows there first).
+   Canvas is an opaque background so scrolled-past columns don't show
+   through underneath it. */
+.standings-table .col-team-cell {
+  position: sticky;
+  right: 0;
+  z-index: 1;
+  background: Canvas;
+}
+
 /* Shared by the real team button and the no-team placeholder div, so
    they're guaranteed to look identical instead of trying to reverse-
    engineer what the browser's default <button> chrome looks like. */
