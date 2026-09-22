@@ -269,7 +269,7 @@ button.team-thumbnails {
   border: 1px solid #ccc;
   border-radius: 10px;
   overflow: hidden;
-  width: 330.72px;
+  width: 400px;
   height: 263.58px;
 }
 
@@ -311,16 +311,19 @@ button.team-thumbnails {
 }
 
 /* A fixed (not auto/content-sized) width so a long ability/item/nature name
-   can't push this column wider — it wraps within 96px instead — which in
+   can't push this column wider — it wraps within it instead — which in
    turn keeps this column identical between the Moves and Stats tabs and
-   stops it from stealing the room the stat bars need on the right. */
+   stops it from stealing the room the stat bars need on the right. 150px
+   is wide enough that even "Terrain Extender" — the longest item name in
+   the current VGC regulation — fits its icon and text on one line instead
+   of wrapping the icon onto its own line above the text. */
 .mon-card-left {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.25rem;
-  flex: 0 0 96px;
-  width: 96px;
+  flex: 0 0 150px;
+  width: 150px;
 }
 
 .mon-card p {
