@@ -254,10 +254,20 @@ button.team-thumbnails {
   }
 }
 
+/* Fixed size (not content-driven) so a card is the same footprint on the
+   Moves tab as on the Stats tab — those two show a different amount of
+   content (4 moves vs. 6 stat rows) and would otherwise render at two
+   different heights depending on which tab is active. Width is capped
+   rather than fixed outright so it still shrinks to fit on narrow/mobile
+   screens instead of overflowing. */
 .mon-card {
+  box-sizing: border-box;
   border: 1px solid #ccc;
   border-radius: 10px;
   overflow: hidden;
+  width: 100%;
+  max-width: 330.72px;
+  height: 263.58px;
 }
 
 .mon-card-header {
