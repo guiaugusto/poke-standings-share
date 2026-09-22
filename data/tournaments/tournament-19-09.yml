@@ -125,48 +125,54 @@ players:
       Teu CUruru (Venusaur) (M) @ Focus Sash  
       Ability: Chlorophyll  
       Level: 50  
+      Modest Nature  
       - Sleep Powder  
       - Protect  
       - Leaf Storm  
       - Earth Power  
-
+      
       Amargedon (Charizard) (M) @ Charizardite Y  
       Ability: Blaze  
       Shiny: Yes  
+      Modest Nature  
       - Protect  
       - Ancient Power  
       - Heat Wave  
       - Weather Ball  
-
+      
       Resistência (Pelipper) (M) @ Sitrus Berry  
       Ability: Drizzle  
+      Modest Nature  
       - Tailwind  
       - Wide Guard  
       - Weather Ball  
       - Hurricane  
-
+      
       Droideka (Golisopod) (M) @ Golisopite  
       Ability: Emergency Exit  
       Shiny: Yes  
+      Adamant Nature  
       - Iron Head  
       - Sucker Punch  
       - Swords Dance  
       - Leech Life  
-
+      
       Duente Verde (Grimmsnarl) @ Light Clay  
       Ability: Prankster  
+      Careful Nature  
       - Spirit Break  
       - Reflect  
       - Light Screen  
       - Parting Shot  
-
+      
       Golden Gate (Archaludon) (M) @ Leftovers  
       Ability: Stamina  
       Shiny: Yes  
+      Calm Nature  
       - Protect  
       - Electro Shot  
       - Flash Cannon  
-      - Dragon Pulse  
+      - Dragon Pulse   
   - rank: 12
     nick: "Vinícius Sampaio"
     pokepaste: "https://pokepast.es/cb2113730997ef4f" # opcional, só para crédito
@@ -345,12 +351,65 @@ players:
       - Protect  
   - rank: 6
     nick: "Ami Aram"
-    pokepaste: "https://pokepast.es/xxxxxxxxxxxx" # opcional, só para crédito
+    pokepaste: "https://pokepast.es/a0cb5cf1e32629da" # opcional, só para crédito
     wins: 4
     losses: 2
     ties: 0
     points: 12
     team: |
+      Froslass (F) @ Froslassite  
+      Ability: Cursed Body  
+      Level: 50  
+      Modest Nature  
+      - Blizzard  
+      - Shadow Ball  
+      - Taunt  
+      - Protect  
+      
+      Sneasler @ Focus Sash  
+      Ability: Unburden  
+      Level: 50  
+      Naughty Nature  
+      - Fake Out  
+      - Close Combat  
+      - Dire Claw  
+      - Feint  
+      
+      Basculegion (M) @ Mystic Water  
+      Ability: Swift Swim  
+      Level: 50  
+      Adamant Nature  
+      - Wave Crash  
+      - Aqua Jet  
+      - Last Respects  
+      - Protect  
+      
+      Dragonite @ Dragoninite  
+      Ability: Multiscale  
+      Level: 50  
+      Modest Nature  
+      - Dragon Pulse  
+      - Heat Wave  
+      - Tailwind  
+      - Protect  
+      
+      Incineroar @ Sitrus Berry  
+      Ability: Intimidate  
+      Level: 50  
+      Impish Nature  
+      - Fake Out  
+      - Flare Blitz  
+      - Throat Chop  
+      - Parting Shot  
+      
+      Kingambit @ Chople Berry  
+      Ability: Defiant  
+      Level: 50  
+      Adamant Nature  
+      - Kowtow Cleave  
+      - Sucker Punch  
+      - Iron Head  
+      - Low Kick  
   - rank: 22
     nick: "João Vitor Bontempo"
     pokepaste: "https://pokepast.es/xxxxxxxxxxxx" # opcional, só para crédito
@@ -377,20 +436,138 @@ players:
     team: |
   - rank: 19
     nick: "Pedro Barreto"
-    pokepaste: "https://pokepast.es/xxxxxxxxxxxx" # opcional, só para crédito
+    pokepaste: "https://pokepast.es/a2a38e419f51583a" # opcional, só para crédito
     wins: 1
     losses: 4
     ties: 0
     points: 3
     team: |
+      Metagross @ Metagrossite  
+      Ability: Clear Body  
+      Level: 50  
+      EVs: 2 HP / 32 Atk / 32 Spe  
+      Jolly Nature  
+      - Protect  
+      - Iron Head  
+      - Psychic Fangs  
+      - Ice Punch  
+      
+      Basculegion (M) @ Life Orb  
+      Ability: Adaptability  
+      Level: 50  
+      EVs: 18 Atk / 30 Def / 18 Spe  
+      Adamant Nature  
+      - Protect  
+      - Wave Crash  
+      - Last Respects  
+      - Aqua Jet  
+      
+      Raichu @ Raichunite Y  
+      Ability: Lightning Rod  
+      Level: 50  
+      EVs: 11 HP / 30 Def / 2 SpA / 23 Spe  
+      Timid Nature  
+      - Protect  
+      - Zap Cannon  
+      - Focus Blast  
+      - Fake Out  
+      
+      Whimsicott @ Fairy Feather  
+      Ability: Prankster  
+      Level: 50  
+      EVs: 2 HP / 32 SpA / 32 Spe  
+      Timid Nature  
+      - Protect  
+      - Moonblast  
+      - Tailwind  
+      - Encore  
+      
+      Kingambit @ Chople Berry  
+      Ability: Defiant  
+      Level: 50  
+      EVs: 8 HP / 19 Atk / 3 Def / 4 SpD / 32 Spe  
+      Adamant Nature  
+      - Protect  
+      - Kowtow Cleave  
+      - Sucker Punch  
+      - Low Kick  
+      
+      Kleavor @ Focus Sash  
+      Ability: Sharpness  
+      Level: 50  
+      EVs: 32 Atk / 32 Spe  
+      Adamant Nature  
+      - Protect  
+      - Stone Axe  
+      - X-Scissor  
+      - Feint  
   - rank: 16
     nick: "Mateus Lázaro"
-    pokepaste: "https://pokepast.es/xxxxxxxxxxxx" # opcional, só para crédito
+    pokepaste: "https://pokepast.es/844d7793a318b474" # opcional, só para crédito
     wins: 2
     losses: 3
     ties: 0
     points: 6
     team: |
+      Golisopod @ Golisopite  
+      Ability: Emergency Exit  
+      Level: 50  
+      EVs: 32 HP / 32 Atk / 2 SpD  
+      Adamant Nature  
+      - Sucker Punch  
+      - Iron Head  
+      - Leech Life  
+      - Protect  
+      
+      Pelipper @ Focus Sash  
+      Ability: Drizzle  
+      Level: 50  
+      EVs: 32 HP / 32 SpA / 2 SpD  
+      Quiet Nature  
+      - Protect  
+      - Wide Guard  
+      - Hurricane  
+      - Weather Ball  
+      
+      Sinistcha @ Colbur Berry  
+      Ability: Hospitality  
+      Level: 50  
+      EVs: 32 HP / 32 Def / 2 SpD  
+      Bold Nature  
+      - Trick Room  
+      - Rage Powder  
+      - Protect  
+      - Matcha Gotcha  
+      
+      Sylveon @ Fairy Feather  
+      Ability: Pixilate  
+      Level: 50  
+      EVs: 32 HP / 2 Def / 32 SpA  
+      Quiet Nature  
+      - Hyper Voice  
+      - Hyper Beam  
+      - Protect  
+      - Shadow Ball  
+      
+      Archaludon @ Leftovers  
+      Ability: Stamina  
+      Level: 50  
+      EVs: 32 HP / 14 SpA / 20 SpD  
+      Modest Nature  
+      - Electro Shot  
+      - Flash Cannon  
+      - Aura Sphere  
+      - Protect  
+      
+      Farigiraf @ Sitrus Berry  
+      Ability: Armor Tail  
+      Level: 50  
+      EVs: 32 HP / 19 Def / 15 SpD  
+      Relaxed Nature  
+      - Psychic  
+      - Trick Room  
+      - Protect  
+      - Hyper Voice  
   - rank: 18
     nick: "Isaac Brandt"
     pokepaste: "https://pokepast.es/xxxxxxxxxxxx" # opcional, só para crédito
@@ -417,12 +594,72 @@ players:
     team: |
   - rank: 14
     nick: "Rafael Sacramento"
-    pokepaste: "https://pokepast.es/xxxxxxxxxxxx" # opcional, só para crédito
+    pokepaste: "https://pokepast.es/766bd0d013864259" # opcional, só para crédito
     wins: 2
     losses: 3
     ties: 0
     points: 6
     team: |
+      Lucario @ Lucarionite Z  
+      Ability: Inner Focus  
+      Level: 50  
+      EVs: 2 HP / 32 SpA / 32 Spe  
+      Timid Nature  
+      - Aura Sphere  
+      - Flash Cannon  
+      - Calm Mind  
+      - Detect  
+      
+      Incineroar @ Rocky Helmet  
+      Ability: Intimidate  
+      Level: 50  
+      EVs: 21 HP / 5 Atk / 15 Def / 24 SpD / 1 Spe  
+      Adamant Nature  
+      - Fake Out  
+      - Flare Blitz  
+      - Throat Chop  
+      - Parting Shot  
+      
+      Rillaboom @ Sitrus Berry  
+      Ability: Grassy Surge  
+      Level: 50  
+      EVs: 11 HP / 15 Atk / 7 Def / 32 SpD / 1 Spe  
+      Adamant Nature  
+      - Fake Out  
+      - Grassy Glide  
+      - Wood Hammer  
+      - Protect  
+      
+      Basculegion (M) @ Choice Scarf  
+      Ability: Adaptability  
+      Level: 50  
+      EVs: 4 HP / 32 Atk / 30 Spe  
+      Adamant Nature  
+      - Last Respects  
+      - Psychic Fangs  
+      - Flip Turn  
+      - Wave Crash  
+      
+      Ninetales-Alola @ Light Clay  
+      Ability: Snow Warning  
+      Level: 50  
+      EVs: 13 HP / 19 SpA / 25 SpD / 9 Spe  
+      Modest Nature  
+      - Aurora Veil  
+      - Blizzard  
+      - Moonblast  
+      - Protect  
+      
+      Aerodactyl @ Focus Sash  
+      Ability: Unnerve  
+      Level: 50  
+      EVs: 2 HP / 32 Atk / 32 Spe  
+      Adamant Nature  
+      - Rock Slide  
+      - Dual Wingbeat  
+      - Tailwind  
+      - Wide Guard  
+
   - rank: 11
     nick: "Daniel Bezerra"
     pokepaste: "https://pokepast.es/xxxxxxxxxxxx" # opcional, só para crédito
@@ -433,28 +670,186 @@ players:
     team: |
   - rank: 10
     nick: "Lucas Freitas"
-    pokepaste: "https://pokepast.es/xxxxxxxxxxxx" # opcional, só para crédito
+    pokepaste: "https://pokepast.es/813bd3bc34cb4d5c" # opcional, só para crédito
     wins: 3
     losses: 2
     ties: 0
     points: 9
     team: |
+      Farigiraf @ Mental Herb  
+      Ability: Armor Tail  
+      Level: 50  
+      EVs: 27 HP / 19 Def / 20 SpD  
+      Relaxed Nature  
+      - Protect  
+      - Twin Beam  
+      - Thunderbolt  
+      - Trick Room  
+      
+      Incineroar @ White Herb  
+      Ability: Intimidate  
+      Level: 50  
+      EVs: 32 HP / 32 Atk / 2 Spe  
+      Adamant Nature  
+      - Fake Out  
+      - Darkest Lariat  
+      - Flare Blitz  
+      - Close Combat  
+      
+      Alakazam @ Focus Sash  
+      Ability: Inner Focus  
+      Level: 50  
+      EVs: 2 HP / 32 SpA / 32 Spe  
+      Timid Nature  
+      - Protect  
+      - Imprison  
+      - Expanding Force  
+      - Trick Room  
+      
+      Sirfetch’d @ Leek  
+      Ability: Scrappy  
+      Level: 50  
+      EVs: 32 HP / 32 Atk / 2 Def  
+      Brave Nature  
+      - Detect  
+      - Close Combat  
+      - Meteor Assault  
+      - Feint  
+      Abomasnow @ Abomasite  
+      Ability: Snow Warning  
+      Level: 50  
+      EVs: 32 HP / 2 Def / 32 SpA  
+      Quiet Nature  
+      - Protect  
+      - Blizzard  
+      - Energy Ball  
+      - Earth Power  
+      
+      Golisopod @ Golisopite  
+      Ability: Emergency Exit  
+      Level: 50  
+      EVs: 32 HP / 32 Atk / 2 SpD  
+      Brave Nature  
+      - Liquidation  
+      - Sucker Punch  
+      - Iron Head  
+      - Leech Life
   - rank: 9
     nick: "Daniel Barreto"
-    pokepaste: "https://pokepast.es/xxxxxxxxxxxx" # opcional, só para crédito
+    pokepaste: "https://pokepast.es/1afe5ac65e8248a2" # opcional, só para crédito
     wins: 3
     losses: 2
     ties: 0
     points: 9
     team: |
+      Not Scizor (Golisopod) @ Golisopite  
+      Ability: Emergency Exit  
+      Level: 50  
+      Brave Nature  
+      - Leech Life  
+      - Liquidation  
+      - Swords Dance  
+      - Protect  
+      
+      Incineroar @ Eject Button  
+      Ability: Intimidate  
+      Level: 50  
+      Sassy Nature  
+      - Fake Out  
+      - Throat Chop  
+      - Parting Shot  
+      - Protect  
+      
+      Politoed @ Sitrus Berry  
+      Ability: Drizzle  
+      Level: 50  
+      Timid Nature  
+      - Muddy Water  
+      - Perish Song  
+      - Encore  
+      - Protect  
+      
+      Sinistcha @ Kasib Berry  
+      Ability: Hospitality  
+      Level: 50  
+      Bold Nature  
+      - Matcha Gotcha  
+      - Trick Room  
+      - Rage Powder  
+      - Protect  
+      
+      Archaludon @ Leftovers  
+      Ability: Stamina  
+      Level: 50  
+      Modest Nature  
+      - Flash Cannon  
+      - Electro Shot  
+      - Dragon Pulse  
+      - Protect  
+      
+      Gengar @ Gengarite  
+      Ability: Cursed Body  
+      Level: 50  
+      Timid Nature  
+      - Shadow Ball  
+      - Disable  
+      - Perish Song  
+      - Protect  
   - rank: 1
     nick: "Renan Bernardo"
-    pokepaste: "https://pokepast.es/xxxxxxxxxxxx" # opcional, só para crédito
+    pokepaste: "https://pokepast.es/b4ef8c3ca810ecd9" # opcional, só para crédito
     wins: 7
     losses: 1
     ties: 0
     points: 21
     team: |
+      Raichu @ Raichunite Y  
+      Ability: Lightning Rod  
+      Timid Nature  
+      - Zap Cannon  
+      - Focus Blast  
+      - Protect  
+      - Fake Out  
+      
+      Rillaboom @ Life Orb  
+      Ability: Grassy Surge  
+      Adamant Nature  
+      - Wood Hammer  
+      - Grassy Glide  
+      - High Horsepower  
+      - Fake Out  
+      
+      Gholdengo @ Grassy Seed  
+      Ability: Good as Gold  
+      Modest Nature  
+      - Make It Rain  
+      - Shadow Ball  
+      - Nasty Plot  
+      - Protect  
+      
+      Salamence @ Salamencite  
+      Ability: Intimidate  
+      Timid Nature  
+      - Draco Meteor  
+      - Hyper Voice  
+      - Tailwind  
+      - Protect  
+      
+      Arcanine-Hisui @ Focus Sash  
+      Ability: Rock Head  
+      Jolly Nature  
+      - Flare Blitz  
+      - Head Smash  
+      - Extreme Speed  
+      - Protect  
+      
+      Milotic @ Leftovers  
+      Ability: Competitive  
+      Calm Nature  
+      - Hydro Pump  
+      - Hypnosis  
+      - Coil  
+      - Protect  
   - rank: 7
     nick: "Vitor Gonçalves"
     pokepaste: "https://pokepast.es/xxxxxxxxxxxx" # opcional, só para crédito
@@ -471,6 +866,7 @@ players:
     ties: 0
     points: 15
     team: |
+
   # - rank: 1
   #   nick: "Nome do Jogador"
   #   pokepaste: "https://pokepast.es/xxxxxxxxxxxx" # opcional, só para crédito
