@@ -22,6 +22,18 @@ describe('MonStatsCard', () => {
     expect(spaValue.length).toBeGreaterThan(0);
   });
 
+  it('colors the boosted and reduced stats by nature (red for boost, blue for reduce)', () => {
+    const mon: ParsedPokemon = {
+      species: 'Incineroar',
+      moves: [],
+      nature: 'Adamant', // +Atk -SpA
+      evs: { atk: 32 },
+    };
+    const { container } = render(<MonStatsCard mon={mon} />);
+    expect(container.querySelector('.stat-bar-value--boost')).toHaveTextContent('32');
+    expect(container.querySelector('.stat-bar-value--reduce')).toHaveTextContent('0');
+  });
+
   it('renders all bars at 0 when the Pokemon has no EVs at all', () => {
     const mon: ParsedPokemon = { species: 'Gholdengo', moves: [] };
     const { container } = render(<MonStatsCard mon={mon} />);

@@ -6,10 +6,17 @@ const MAX_EV = 32;
 interface Props {
   label: string;
   ev: number;
+  sign?: '+' | '-';
 }
 
-export function StatBar({ label, ev }: Props) {
+const SIGN_CLASS = {
+  '+': 'stat-bar-value--boost',
+  '-': 'stat-bar-value--reduce',
+};
+
+export function StatBar({ label, ev, sign }: Props) {
   const percent = Math.min(100, Math.max(0, (ev / MAX_EV) * 100));
+  const valueClassName = sign ? `stat-bar-value ${SIGN_CLASS[sign]}` : 'stat-bar-value';
 
   return (
     <div className="stat-bar">
@@ -17,7 +24,7 @@ export function StatBar({ label, ev }: Props) {
       <div className="stat-bar-track">
         <div className="stat-bar-fill" data-testid="stat-bar-fill" style={{ width: `${percent}%` }} />
       </div>
-      <span className="stat-bar-value">{ev}</span>
+      <span className={valueClassName}>{ev}</span>
     </div>
   );
 }

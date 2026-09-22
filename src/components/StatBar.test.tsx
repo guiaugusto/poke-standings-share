@@ -28,4 +28,21 @@ describe('StatBar', () => {
     render(<StatBar label="Def" ev={252} />);
     expect(screen.getByTestId('stat-bar-fill')).toHaveStyle({ width: '100%' });
   });
+
+  it('colors the value red when the nature boosts this stat', () => {
+    render(<StatBar label="Atk" ev={32} sign="+" />);
+    expect(screen.getByText('32')).toHaveClass('stat-bar-value--boost');
+  });
+
+  it('colors the value blue when the nature reduces this stat', () => {
+    render(<StatBar label="Spe" ev={0} sign="-" />);
+    expect(screen.getByText('0')).toHaveClass('stat-bar-value--reduce');
+  });
+
+  it('applies no color class when the nature does not affect this stat', () => {
+    render(<StatBar label="Def" ev={4} />);
+    const value = screen.getByText('4');
+    expect(value).not.toHaveClass('stat-bar-value--boost');
+    expect(value).not.toHaveClass('stat-bar-value--reduce');
+  });
 });

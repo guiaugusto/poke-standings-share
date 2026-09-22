@@ -410,6 +410,14 @@ button.team-thumbnails {
   font-weight: bold;
 }
 
+.stat-bar-value--boost {
+  color: #e05050;
+}
+
+.stat-bar-value--reduce {
+  color: #4a90d9;
+}
+
 .species-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
