@@ -88,7 +88,7 @@ export function StandingsTable({ players, onSelectPlayer }: Props) {
                 <td>{player.points}</td>
                 <td>
                   {player.parsedTeam.length === 0 ? (
-                    <div className="team-thumbnails-placeholder">
+                    <div className="team-thumbnails">
                       {Array.from({ length: 6 }, (_, i) => (
                         <img key={i} src={getUnknownSpriteUrl()} alt="Unknown Pokémon" width={32} height={32} />
                       ))}
@@ -96,6 +96,7 @@ export function StandingsTable({ players, onSelectPlayer }: Props) {
                   ) : (
                     <button
                       type="button"
+                      className="team-thumbnails"
                       aria-label={`${player.nick}'s team`}
                       onClick={() => onSelectPlayer(player)}
                     >

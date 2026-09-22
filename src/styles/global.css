@@ -120,17 +120,14 @@ body {
   background: rgba(127, 127, 127, 0.08);
 }
 
-/* Same footprint as the real team button (padding/border/radius), just
-   not interactive — for a player with no team, so the row reads the same.
-   ButtonFace/ButtonBorder are the actual CSS system colors a plain
-   <button> renders with, so this matches it exactly instead of guessing
-   a gray that might not match the browser/OS theme. */
-.team-thumbnails-placeholder {
+/* Shared by the real team button and the no-team placeholder div, so
+   they're guaranteed to look identical instead of trying to reverse-
+   engineer what the browser's default <button> chrome looks like. */
+.team-thumbnails {
   display: inline-flex;
-  padding: 1px 6px;
-  border: 1px solid ButtonBorder;
-  border-radius: 4px;
-  background: ButtonFace;
+  border: none;
+  padding: 0;
+  background: none;
 }
 
 .modal-overlay {
