@@ -1,9 +1,9 @@
 import type { ParsedPokemon, StatKey } from '../lib/showdownParser';
-import { getSpriteUrl } from '../lib/sprites';
 import { getBaseStats } from '../lib/baseStats';
 import { computeFinalStat } from '../lib/statCalc';
 import { getNatureSign, getNatureMultiplier } from '../lib/natures';
 import { StatBar } from './StatBar';
+import { MonInfoColumn } from './MonInfoColumn';
 import { TypeIcon } from './TypeIcon';
 
 interface Props {
@@ -34,15 +34,7 @@ export function MonStatsCard({ mon }: Props) {
         {mon.teraType && <TypeIcon type={mon.teraType.toLowerCase()} />}
       </div>
       <div className="mon-card-body mon-card-body--stats">
-        <img
-          src={getSpriteUrl(mon.species, mon.gender)}
-          alt={mon.species}
-          width={80}
-          height={80}
-          onError={(e) => {
-            e.currentTarget.style.visibility = 'hidden';
-          }}
-        />
+        <MonInfoColumn mon={mon} />
         <div className="stat-bar-list">
           {EV_ORDER.map((key) => {
             const base = baseStats?.[key];

@@ -217,12 +217,8 @@ button.team-thumbnails {
   color: canvastext;
   padding: 2rem;
   border-radius: 8px;
-  /* Fixed (not max-*) so the modal box stays the same size when switching
-     between the Moves and Stats tabs, instead of shrinking/growing to fit
-     whichever tab's content is shorter or taller. Content that doesn't fill
-     it just leaves whitespace; content that overflows scrolls internally. */
-  width: min(95vw, 1200px);
-  height: 92vh;
+  max-width: min(95vw, 1200px);
+  max-height: 92vh;
   overflow: auto;
 }
 
@@ -385,9 +381,6 @@ button.team-thumbnails {
 
 .stat-bar-investment {
   text-align: center;
-  border: 1px solid #999;
-  border-radius: 4px;
-  padding: 0.1rem 0.3rem;
   font-size: 0.85rem;
 }
 
