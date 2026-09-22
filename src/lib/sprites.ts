@@ -24,7 +24,7 @@ const SPRITE_BASE = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sp
 // an unmapped species degrades to that icon automatically. getUnknownSpriteUrl()
 // below exposes this same id-0 icon directly, for UI that wants it on
 // purpose rather than as a fallback (e.g. a "no team" placeholder slot).
-export function slugify(species: string): string {
+function slugify(species: string): string {
   return species
     .toLowerCase()
     .replace(/\s+/g, '-')
