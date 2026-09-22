@@ -199,6 +199,12 @@ button.team-thumbnails {
 .modal-overlay {
   position: fixed;
   inset: 0;
+  /* Higher than the sticky Team column's z-index: 1 — without an explicit
+     value here, position: fixed with z-index: auto can still paint below
+     a positioned descendant elsewhere on the page that has a positive
+     z-index, regardless of DOM order, which is what let the standings
+     table's sticky column render on top of this overlay. */
+  z-index: 10;
   background: rgba(0, 0, 0, 0.6);
   display: flex;
   align-items: center;
