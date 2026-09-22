@@ -9,9 +9,22 @@ interface Props {
   sign?: '+' | '-';
 }
 
-const SIGN_CLASS = {
+const SIGN_CLASS: Record<'+' | '-', string> = {
   '+': 'stat-bar-value--boost',
   '-': 'stat-bar-value--reduce',
+};
+
+// A shape cue (▲/▼), not just color, so a colorblind reader can still tell
+// a boosted stat from a reduced one — plus a screen-reader-only label
+// spelling that out, since the arrow glyph itself isn't announced.
+const SIGN_ARROW: Record<'+' | '-', string> = {
+  '+': '▲',
+  '-': '▼',
+};
+
+const SIGN_DESCRIPTION: Record<'+' | '-', string> = {
+  '+': 'boosted by nature',
+  '-': 'reduced by nature',
 };
 
 export function StatBar({ label, ev, sign }: Props) {
@@ -24,7 +37,17 @@ export function StatBar({ label, ev, sign }: Props) {
       <div className="stat-bar-track">
         <div className="stat-bar-fill" data-testid="stat-bar-fill" style={{ width: `${percent}%` }} />
       </div>
-      <span className={valueClassName}>{ev}</span>
+      <span className={valueClassName}>
+        {ev}
+        {sign && (
+          <>
+            <span className="stat-bar-arrow" aria-hidden="true">
+              {SIGN_ARROW[sign]}
+            </span>
+            <span className="sr-only">, {SIGN_DESCRIPTION[sign]}</span>
+          </>
+        )}
+      </span>
     </div>
   );
 }

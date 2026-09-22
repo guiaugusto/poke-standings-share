@@ -418,6 +418,27 @@ button.team-thumbnails {
   color: #4a90d9;
 }
 
+.stat-bar-arrow {
+  display: inline-block;
+  margin-left: 0.15rem;
+  font-size: 0.7em;
+}
+
+/* Visually hidden but still readable by screen readers — pairs with the
+   color-only boost/reduce cue so that information isn't conveyed by color
+   (or the arrow glyph, which a screen reader won't describe) alone. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .species-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
