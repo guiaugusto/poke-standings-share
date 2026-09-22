@@ -43,7 +43,10 @@ export default function TournamentInteractive({ players, usageStats }: Props) {
       {activeTab === 'standings' && <StandingsTable players={players} onSelectPlayer={setSelectedPlayer} />}
 
       {activeTab === 'statistics' && (
-        <StatisticsPanel usageStats={usageStats} totalPlayers={players.length} />
+        <StatisticsPanel
+          usageStats={usageStats}
+          totalPlayers={players.filter((p) => p.parsedTeam.length > 0).length}
+        />
       )}
 
       <TeamModal player={selectedPlayer} onClose={() => setSelectedPlayer(null)} />
