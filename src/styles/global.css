@@ -358,7 +358,6 @@ button.team-thumbnails {
 }
 
 .species-carousel-pct {
-  color: #666;
   font-size: 0.85rem;
 }
 
@@ -406,7 +405,6 @@ button.team-thumbnails {
 
 .items-grid-pct {
   font-size: 0.75rem;
-  color: #666;
 }
 
 @media (max-width: 640px) {
