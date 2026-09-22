@@ -291,13 +291,17 @@ button.team-thumbnails {
   align-items: center;
 }
 
+/* A fixed (not auto/content-sized) width so a long ability/item/nature name
+   can't push this column wider — it wraps within 96px instead — which in
+   turn keeps this column identical between the Moves and Stats tabs and
+   stops it from stealing the room the stat bars need on the right. */
 .mon-card-left {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.25rem;
-  flex: 0 0 auto;
-  min-width: 88px;
+  flex: 0 0 96px;
+  width: 96px;
 }
 
 .mon-card p {
@@ -307,6 +311,7 @@ button.team-thumbnails {
 .mon-card-left p {
   font-size: 0.9rem;
   text-align: center;
+  overflow-wrap: break-word;
 }
 
 .mon-card-nature {
@@ -316,6 +321,7 @@ button.team-thumbnails {
 
 .mon-card-item {
   display: flex !important;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   gap: 0.3rem;
@@ -332,6 +338,7 @@ button.team-thumbnails {
   padding: 0;
   margin: 0;
   flex: 1;
+  min-width: 0;
   text-align: left;
 }
 
@@ -345,16 +352,20 @@ button.team-thumbnails {
 
 .stat-bar-list {
   flex: 1;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
 }
 
+/* The label/base/investment/final columns are as tight as they can be
+   while still fitting their content, so the bar (minmax(28px, 1fr)) gets
+   whatever's left over instead of being squeezed toward 0 or invisible. */
 .stat-bar {
   display: grid;
-  grid-template-columns: 3rem 2rem 1fr 3rem 2.5rem;
+  grid-template-columns: 2.2rem 1.6rem minmax(28px, 1fr) 2.2rem 2.2rem;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.4rem;
   font-size: 0.9rem;
 }
 
