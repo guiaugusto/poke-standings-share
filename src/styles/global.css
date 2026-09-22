@@ -130,6 +130,12 @@ body {
   background: none;
 }
 
+/* Only the real, clickable button gets the hand cursor — the no-team
+   placeholder is a plain div and keeps the default cursor. */
+button.team-thumbnails {
+  cursor: pointer;
+}
+
 .modal-overlay {
   position: fixed;
   inset: 0;
