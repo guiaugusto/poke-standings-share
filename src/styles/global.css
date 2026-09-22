@@ -120,21 +120,6 @@ body {
   background: rgba(127, 127, 127, 0.08);
 }
 
-.team-thumbnails {
-  display: flex;
-  gap: 0.15rem;
-}
-
-.mon-placeholder {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: rgba(127, 127, 127, 0.3);
-}
-
 .modal-overlay {
   position: fixed;
   inset: 0;
