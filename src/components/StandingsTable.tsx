@@ -72,7 +72,7 @@ export function StandingsTable({ players, onSelectPlayer }: Props) {
                   {player.parsedTeam.length === 0 ? (
                     <div className="team-thumbnails">
                       {Array.from({ length: 6 }, (_, i) => (
-                        <img key={i} src={getUnknownSpriteUrl()} alt="Unknown Pokémon" width={32} height={32} />
+                        <img key={i} src={getUnknownSpriteUrl()} alt="Unknown Pokémon" width={40} height={40} />
                       ))}
                     </div>
                   ) : (
@@ -83,7 +83,7 @@ export function StandingsTable({ players, onSelectPlayer }: Props) {
                       onClick={() => onSelectPlayer(player)}
                     >
                       {player.parsedTeam.map((mon) => (
-                        <img key={mon.species} src={getSpriteUrl(mon.species, mon.gender)} alt={mon.species} width={32} height={32} onError={(e) => { e.currentTarget.style.visibility = 'hidden'; }} />
+                        <img key={mon.species} src={getSpriteUrl(mon.species, mon.gender)} alt={mon.species} width={40} height={40} onError={(e) => { e.currentTarget.style.visibility = 'hidden'; }} />
                       ))}
                     </button>
                   )}

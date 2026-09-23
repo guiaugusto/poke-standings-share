@@ -116,7 +116,7 @@ body {
      down toward 0 instead of growing the table past the container — its
      nowrap text then overflows visibly across the other columns instead
      of the wrapper's overflow-x scrolling kicking in. This min-width is
-     the four fixed columns (70+70+70+230) plus a real minimum for Player,
+     the four fixed columns (70+70+70+264) plus a real minimum for Player,
      so every column gets its actual computed width and the table
      overflows (scrolls) as a whole on narrow screens instead of any one
      column collapsing.
@@ -124,7 +124,7 @@ body {
      position: sticky on table cells in Safari/iOS — the sticky Team
      column below wouldn't actually stick on a phone. separate +
      border-spacing: 0 looks the same but keeps sticky working there. */
-  min-width: 620px;
+  min-width: 654px;
   border-collapse: separate;
   border-spacing: 0;
   table-layout: fixed;
@@ -134,7 +134,7 @@ body {
    with table-layout: fixed, a percentage-based column shrinks below its
    own content's minimum size on narrow/mobile viewports — that's what was
    squishing the Rank/W-L-T/Points headers into overlapping, wrapped text,
-   and cutting off the Team column's row of un-shrinking 32px sprites
+   and cutting off the Team column's row of un-shrinking 40px sprites
    before the sticky rule below even got a chance to keep it in view.
    Player is intentionally left with no explicit width: in a fixed-layout
    table it then absorbs whatever space remains, which is what keeps the
@@ -153,7 +153,7 @@ body {
 }
 
 .standings-table .col-team {
-  width: 230px;
+  width: 264px;
 }
 
 .standings-table th,
