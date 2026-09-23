@@ -7,8 +7,6 @@ interface Props {
   onSelectPlayer: (player: PlayerWithTeam) => void;
 }
 
-type SortDir = 'asc' | 'desc';
-
 function matchesQuery(player: PlayerWithTeam, query: string): boolean {
   if (player.nick.toLowerCase().includes(query)) return true;
   return player.parsedTeam.some((mon) => mon.species.toLowerCase().includes(query));
@@ -16,20 +14,12 @@ function matchesQuery(player: PlayerWithTeam, query: string): boolean {
 
 export function StandingsTable({ players, onSelectPlayer }: Props) {
   const [filter, setFilter] = useState('');
-  const [sortDir, setSortDir] = useState<SortDir>('asc');
-
-  const handleSort = () => {
-    setSortDir((dir) => (dir === 'asc' ? 'desc' : 'asc'));
-  };
 
   const visiblePlayers = useMemo(() => {
     const query = filter.trim().toLowerCase();
     const filtered = query ? players.filter((p) => matchesQuery(p, query)) : players;
-    const dirMultiplier = sortDir === 'asc' ? 1 : -1;
-    return [...filtered].sort((a, b) => (a.rank - b.rank) * dirMultiplier);
-  }, [players, filter, sortDir]);
-
-  const sortIndicator = sortDir === 'asc' ? ' ▲' : ' ▼';
+    return [...filtered].sort((a, b) => a.rank - b.rank);
+  }, [players, filter]);
 
   return (
     <div>
@@ -50,11 +40,7 @@ export function StandingsTable({ players, onSelectPlayer }: Props) {
           </colgroup>
           <thead>
             <tr>
-              <th>
-                <button type="button" onClick={handleSort}>
-                  Rank{sortIndicator}
-                </button>
-              </th>
+              <th>Rank</th>
               <th>Player</th>
               <th>W-L-T</th>
               <th>Points</th>

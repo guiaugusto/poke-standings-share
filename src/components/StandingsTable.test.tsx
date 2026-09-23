@@ -37,20 +37,13 @@ describe('StandingsTable', () => {
     expect(onSelectPlayer).toHaveBeenCalledWith(players[1]);
   });
 
-  it('reverses order to rank descending when the Rank header is clicked', () => {
+  it('does not offer any column sorting at all', () => {
     render(<StandingsTable players={players} onSelectPlayer={() => {}} />);
 
-    fireEvent.click(screen.getByRole('button', { name: /rank/i }));
-    const rows = screen.getAllByRole('row').slice(1);
-    expect(rows[0]).toHaveTextContent('Ana Souza'); // rank 2
-    expect(rows[1]).toHaveTextContent('Joseph Ugarte'); // rank 1
-  });
-
-  it('does not offer sorting by W-L-T or Points', () => {
-    render(<StandingsTable players={players} onSelectPlayer={() => {}} />);
-
+    expect(screen.queryByRole('button', { name: /rank/i })).not.toBeInTheDocument();
     expect(screen.queryByRole('button', { name: /w-l-t/i })).not.toBeInTheDocument();
     expect(screen.queryByRole('button', { name: /^points/i })).not.toBeInTheDocument();
+    expect(screen.getByText('Rank')).toBeInTheDocument();
     expect(screen.getByText('W-L-T')).toBeInTheDocument();
     expect(screen.getByText('Points')).toBeInTheDocument();
   });
