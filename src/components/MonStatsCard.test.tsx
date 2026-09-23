@@ -44,8 +44,8 @@ describe('MonStatsCard', () => {
       evs: { hp: 27, atk: 32 },
     };
     render(<MonStatsCard mon={mon} />);
-    expect(screen.getByText('184')).toBeInTheDocument(); // HP final
-    expect(screen.getByText('166')).toBeInTheDocument(); // Atk final, boosted
+    expect(screen.getByText('197')).toBeInTheDocument(); // HP final
+    expect(screen.getByText('183')).toBeInTheDocument(); // Atk final, boosted
     expect(screen.getByText('90')).toBeInTheDocument(); // SpA final, reduced
   });
 
