@@ -288,7 +288,7 @@ button.team-thumbnails {
   border: 1px solid #ccc;
   border-radius: 10px;
   overflow: hidden;
-  width: 340px;
+  width: 360px;
   height: 263.58px;
 }
 
@@ -401,7 +401,7 @@ button.team-thumbnails {
 
 .stat-bar {
   display: grid;
-  grid-template-columns: 2.2rem 1fr 2rem;
+  grid-template-columns: 2.2rem minmax(20px, 1fr) 2.8rem 2.2rem;
   align-items: center;
   gap: 0.5rem;
   font-size: 0.9rem;
@@ -425,6 +425,10 @@ button.team-thumbnails {
 }
 
 .stat-bar-value {
+  text-align: right;
+}
+
+.stat-bar-final {
   text-align: right;
   font-weight: bold;
 }

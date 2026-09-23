@@ -41,3 +41,10 @@ export function getNatureSign(nature: string | undefined, stat: StatKey): '+' | 
   if (effect.reduce === stat) return '-';
   return undefined;
 }
+
+export function getNatureMultiplier(nature: string | undefined, stat: StatKey): number {
+  const sign = getNatureSign(nature, stat);
+  if (sign === '+') return 1.1;
+  if (sign === '-') return 0.9;
+  return 1;
+}

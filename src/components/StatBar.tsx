@@ -1,11 +1,13 @@
-// This shop's tournament data records EV investment on its own 0-32 scale
-// per stat (not the games' raw 0-252 EVs), so the bar tracks completeness
-// against that same scale.
-const MAX_EV = 32;
+// This shop's tournament data records stat point investment on its own
+// 0-32 scale per stat (Pokémon Champions' simplified system, not the main
+// series games' raw 0-252 EVs), so the bar tracks completeness against
+// that same scale.
+const MAX_STAT_POINTS = 32;
 
 interface Props {
   label: string;
   ev: number;
+  final?: number;
   sign?: '+' | '-';
 }
 
@@ -27,8 +29,8 @@ const SIGN_DESCRIPTION: Record<'+' | '-', string> = {
   '-': 'reduced by nature',
 };
 
-export function StatBar({ label, ev, sign }: Props) {
-  const percent = Math.min(100, Math.max(0, (ev / MAX_EV) * 100));
+export function StatBar({ label, ev, final, sign }: Props) {
+  const percent = Math.min(100, Math.max(0, (ev / MAX_STAT_POINTS) * 100));
   const valueClassName = sign ? `stat-bar-value ${SIGN_CLASS[sign]}` : 'stat-bar-value';
 
   return (
@@ -46,6 +48,7 @@ export function StatBar({ label, ev, sign }: Props) {
         <span className="stat-bar-number">{ev}</span>
         {sign && <span className="sr-only">, {SIGN_DESCRIPTION[sign]}</span>}
       </span>
+      <span className="stat-bar-final">{final ?? '—'}</span>
     </div>
   );
 }

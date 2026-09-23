@@ -34,6 +34,27 @@ describe('MonStatsCard', () => {
     expect(container.querySelector('.stat-bar-value--reduce')).toHaveTextContent('0');
   });
 
+  it('computes and renders the final stat from base stats + stat points + nature', () => {
+    // Incineroar: hp 95 / atk 115 / def 90 / spa 80 / spd 90 / spe 60.
+    const mon: ParsedPokemon = {
+      species: 'Incineroar',
+      moves: [],
+      level: 50,
+      nature: 'Adamant', // +Atk -SpA
+      evs: { hp: 27, atk: 32 },
+    };
+    render(<MonStatsCard mon={mon} />);
+    expect(screen.getByText('184')).toBeInTheDocument(); // HP final
+    expect(screen.getByText('166')).toBeInTheDocument(); // Atk final, boosted
+    expect(screen.getByText('90')).toBeInTheDocument(); // SpA final, reduced
+  });
+
+  it('renders an em dash for the final stat when the species has no base-stat entry', () => {
+    const mon: ParsedPokemon = { species: 'Not A Real Species', moves: [], evs: { hp: 4 } };
+    render(<MonStatsCard mon={mon} />);
+    expect(screen.getAllByText('—').length).toBe(6);
+  });
+
   it('renders all bars at 0 when the Pokemon has no EVs at all', () => {
     const mon: ParsedPokemon = { species: 'Gholdengo', moves: [] };
     const { container } = render(<MonStatsCard mon={mon} />);

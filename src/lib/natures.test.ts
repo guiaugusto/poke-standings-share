@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { getNatureSign } from './natures';
+import { getNatureSign, getNatureMultiplier } from './natures';
 
 describe('getNatureSign', () => {
   it('returns + for the stat a nature boosts', () => {
@@ -28,5 +28,19 @@ describe('getNatureSign', () => {
 
   it('returns undefined for an unrecognized nature name', () => {
     expect(getNatureSign('NotANature', 'atk')).toBeUndefined();
+  });
+});
+
+describe('getNatureMultiplier', () => {
+  it('returns 1.1 for a boosted stat', () => {
+    expect(getNatureMultiplier('Adamant', 'atk')).toBe(1.1);
+  });
+
+  it('returns 0.9 for a reduced stat', () => {
+    expect(getNatureMultiplier('Adamant', 'spa')).toBe(0.9);
+  });
+
+  it('returns 1 for an unaffected stat', () => {
+    expect(getNatureMultiplier('Adamant', 'def')).toBe(1);
   });
 });

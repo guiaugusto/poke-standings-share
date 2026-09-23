@@ -63,4 +63,14 @@ describe('StatBar', () => {
     expect(value).toHaveTextContent('4');
     expect(container.querySelector('.stat-bar-arrow')).not.toBeInTheDocument();
   });
+
+  it('renders the computed final stat when given', () => {
+    render(<StatBar label="HP" ev={27} final={169} />);
+    expect(screen.getByText('169')).toBeInTheDocument();
+  });
+
+  it('renders an em dash for the final stat when it is not known (e.g. species missing base stats)', () => {
+    render(<StatBar label="HP" ev={27} />);
+    expect(screen.getByText('—')).toBeInTheDocument();
+  });
 });
