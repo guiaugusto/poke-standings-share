@@ -38,15 +38,13 @@ export function StatBar({ label, ev, sign }: Props) {
         <div className="stat-bar-fill" data-testid="stat-bar-fill" style={{ width: `${percent}%` }} />
       </div>
       <span className={valueClassName}>
-        {ev}
         {sign && (
-          <>
-            <span className="stat-bar-arrow" aria-hidden="true">
-              {SIGN_ARROW[sign]}
-            </span>
-            <span className="sr-only">, {SIGN_DESCRIPTION[sign]}</span>
-          </>
+          <span className="stat-bar-arrow" aria-hidden="true">
+            {SIGN_ARROW[sign]}
+          </span>
         )}
+        {ev}
+        {sign && <span className="sr-only">, {SIGN_DESCRIPTION[sign]}</span>}
       </span>
     </div>
   );

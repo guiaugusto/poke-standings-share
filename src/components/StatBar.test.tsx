@@ -40,14 +40,14 @@ describe('StatBar', () => {
     const { container } = render(<StatBar label="Atk" ev={32} sign="+" />);
     const value = getValueCell(container);
     expect(value).toHaveClass('stat-bar-value--boost');
-    expect(value).toHaveTextContent('32▲');
+    expect(value).toHaveTextContent('▲32');
   });
 
   it('colors the value blue and shows a down arrow when the nature reduces this stat', () => {
     const { container } = render(<StatBar label="Spe" ev={0} sign="-" />);
     const value = getValueCell(container);
     expect(value).toHaveClass('stat-bar-value--reduce');
-    expect(value).toHaveTextContent('0▼');
+    expect(value).toHaveTextContent('▼0');
   });
 
   it('adds a screen-reader-only description alongside the arrow, since the glyph itself is not announced', () => {
