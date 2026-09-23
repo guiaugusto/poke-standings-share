@@ -196,6 +196,25 @@ button.team-thumbnails {
   cursor: pointer;
 }
 
+/* The 40px icons/264px column above are a desktop-only enlargement — below
+   this breakpoint the sprites and Team column revert to their original
+   32px/230px mobile sizing (this overrides the <img> width/height HTML
+   attributes, which CSS always takes precedence over). */
+@media (max-width: 640px) {
+  .standings-table {
+    min-width: 620px;
+  }
+
+  .standings-table .col-team {
+    width: 230px;
+  }
+
+  .team-thumbnails img {
+    width: 32px;
+    height: 32px;
+  }
+}
+
 .modal-overlay {
   position: fixed;
   inset: 0;
