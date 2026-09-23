@@ -43,7 +43,7 @@ export function StatBar({ label, ev, sign }: Props) {
             {SIGN_ARROW[sign]}
           </span>
         )}
-        {ev}
+        <span className="stat-bar-number">{ev}</span>
         {sign && <span className="sr-only">, {SIGN_DESCRIPTION[sign]}</span>}
       </span>
     </div>

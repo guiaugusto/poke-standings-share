@@ -424,6 +424,16 @@ button.team-thumbnails {
   font-size: 0.7em;
 }
 
+/* Reserves a fixed width for the digits themselves (right-aligned within
+   it), so a 1-digit value (e.g. "4") and a 2-digit value (e.g. "32") push
+   their preceding arrow to the same horizontal position instead of the
+   arrow drifting right on shorter numbers. */
+.stat-bar-number {
+  display: inline-block;
+  min-width: 1.4em;
+  text-align: right;
+}
+
 /* Visually hidden but still readable by screen readers — pairs with the
    color-only boost/reduce cue so that information isn't conveyed by color
    (or the arrow glyph, which a screen reader won't describe) alone. */
